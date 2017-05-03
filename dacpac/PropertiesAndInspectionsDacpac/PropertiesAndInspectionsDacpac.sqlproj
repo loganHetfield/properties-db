@@ -118,7 +118,6 @@
     <Build Include="dbo\Tables\dbo.AED.sql" />
     <Build Include="dbo\Tables\dbo.Address.sql" />
     <Build Include="dbo\Tables\dbo.Access.sql" />
-    <Build Include="dbo\Tables\dbo.MockProductionTable.sql" />
   </ItemGroup>
   <!-- BEGIN - DAC Version - import targets file -->
   <Import Project="$(ProjectDir).msbuild\DacVersionFromAssembly.targets" Condition="Exists('$(ProjectDir).msbuild\DacVersionFromAssembly.targets')" />
