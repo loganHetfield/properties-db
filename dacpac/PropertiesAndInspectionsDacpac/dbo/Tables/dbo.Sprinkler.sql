@@ -1,0 +1,22 @@
+﻿CREATE TABLE [dbo].[Sprinkler] (
+    [SprinklerId]              UNIQUEIDENTIFIER NOT NULL,
+    [StructureId]              UNIQUEIDENTIFIER NOT NULL,
+    [Type]                     INT              NULL,
+    [Design]                   INT              NULL,
+    [NumberOfSprinklers]       INT              NULL,
+    [AreaOrCompartmentCovered] VARCHAR (50)     NULL,
+    [Make]                     VARCHAR (50)     NULL,
+    [Model]                    VARCHAR (50)     NULL,
+    [SerialNumber]             VARCHAR (100)    NULL,
+    [Manufacturer]             VARCHAR (50)     NULL,
+    [SprinklerInstallDate]     DATE             NULL,
+    [FlowRate]                 INT              NULL,
+    [PSI]                      INT              NULL,
+    [FlowDate]                 DATE             NULL,
+    [FlowRateInspector]        UNIQUEIDENTIFIER NULL,
+    [MainSize]                 DECIMAL (18, 2)  NULL,
+    [MainLocation]             VARCHAR (50)     NULL,
+    CONSTRAINT [PK_Sprinkler] PRIMARY KEY CLUSTERED ([SprinklerId] ASC),
+    CONSTRAINT [FK_Sprinkler_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+);
+
