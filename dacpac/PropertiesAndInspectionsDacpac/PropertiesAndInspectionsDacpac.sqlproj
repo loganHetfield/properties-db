@@ -109,15 +109,15 @@
     <Build Include="dbo\Tables\dbo.Event.sql" />
     <Build Include="dbo\Tables\dbo.Detector.sql" />
     <Build Include="dbo\Tables\dbo.ContactRole.sql" />
-    <Build Include="dbo\Tables\dbo.ContactGroup.sql" />
     <Build Include="dbo\Tables\dbo.Contact.sql" />
     <Build Include="dbo\Tables\dbo.Chemical.sql" />
     <Build Include="dbo\Tables\dbo.Building.sql" />
     <Build Include="dbo\Tables\dbo.Attachment.sql" />
     <Build Include="dbo\Tables\dbo.Alarm.sql" />
     <Build Include="dbo\Tables\dbo.AED.sql" />
-    <Build Include="dbo\Tables\dbo.Address.sql" />
     <Build Include="dbo\Tables\dbo.Access.sql" />
+    <Build Include="dbo\Tables\dbo.PropertyContact.sql" />
+    <Build Include="dbo\Tables\dbo.OccupantContact.sql" />
   </ItemGroup>
   <!-- BEGIN - DAC Version - import targets file -->
   <!-- <Import Project="$(ProjectDir).msbuild\DacVersionFromAssembly.targets" Condition="Exists('$(ProjectDir).msbuild\DacVersionFromAssembly.targets')" />

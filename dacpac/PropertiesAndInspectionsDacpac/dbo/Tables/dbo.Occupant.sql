@@ -39,7 +39,8 @@
     [CertificateOfOccupancyDate]         DATE             NULL,
     [PreviousAndPartialCOOIssued]        VARCHAR (255)    NULL,
     [Notes]                              NCHAR (10)       NULL,
-    CONSTRAINT [PK_Occupant] PRIMARY KEY CLUSTERED ([OccupantId] ASC),
-    CONSTRAINT [FK_Occupant_ContactGroup] FOREIGN KEY ([ContactGroup]) REFERENCES [dbo].[ContactGroup] ([ContactGroupId])
+    CONSTRAINT [PK_Occupant] PRIMARY KEY CLUSTERED ([OccupantId] ASC)
 );
+
+
 
