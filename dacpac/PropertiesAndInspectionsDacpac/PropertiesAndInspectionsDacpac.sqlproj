@@ -120,13 +120,13 @@
     <Build Include="dbo\Tables\dbo.Access.sql" />
   </ItemGroup>
   <!-- BEGIN - DAC Version - import targets file -->
-  <Import Project="$(ProjectDir).msbuild\DacVersionFromAssembly.targets" Condition="Exists('$(ProjectDir).msbuild\DacVersionFromAssembly.targets')" />
+  <!-- <Import Project="$(ProjectDir).msbuild\DacVersionFromAssembly.targets" Condition="Exists('$(ProjectDir).msbuild\DacVersionFromAssembly.targets')" />
   <Target Name="PrepareDacVersionFromAssembly" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <EnableDacVersionFromAssembly>True</EnableDacVersionFromAssembly>
       <ErrorText>This project references Custom MSBuild targets that are missing on this computer. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(ProjectDir).msbuild\DacVersionFromAssembly.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(ProjectDir).msbuild\DacVersionFromAssembly.targets'))" />
-  </Target>
+  </Target> -->
   <!-- END - DAC Version -->
 </Project>
