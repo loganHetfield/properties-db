@@ -6,5 +6,6 @@
     <DeployScriptFileName>PropertiesAndInspectionsDacpac.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=jayro-dbserver.database.windows.net;User ID=jayro;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
   </PropertyGroup>
 </Project>
