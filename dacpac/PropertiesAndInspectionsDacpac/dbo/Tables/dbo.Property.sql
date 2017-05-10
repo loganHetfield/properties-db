@@ -23,10 +23,10 @@
     [StreetOrHighway]                 VARCHAR (50)       NOT NULL,
     [StreetType]                      INT                NULL,
     [StreetSuffix]                    INT                NULL,
-    [City]                            INT                NOT NULL,
+    [City]                            NVARCHAR (255)     NOT NULL,
     [State]                           INT                NOT NULL,
     [Zip]                             VARCHAR (10)       NOT NULL,
-    [County]                          INT                NOT NULL,
+    [County]                          NVARCHAR (255)     NOT NULL,
     [Location]                        [sys].[geography]  NULL,
     [Latitude]                        DECIMAL (9, 6)     NULL,
     [Longitude]                       DECIMAL (9, 6)     NULL,
@@ -43,6 +43,8 @@
     [FireMdmRevisionVersion]          BIGINT             NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
+
+
 
 
 
