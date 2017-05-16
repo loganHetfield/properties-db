@@ -9,7 +9,8 @@
     [ExtinguisherInspectionDate]  DATE             NULL,
     [TestType]                    INT              NULL,
     [TestDate]                    DATE             NULL,
-    CONSTRAINT [PK_ExtinguisherSystem] PRIMARY KEY CLUSTERED ([ExtinguisherSystemsId] ASC),
-    CONSTRAINT [FK_ExtinguisherSystem_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+    CONSTRAINT [PK_ExtinguisherSystem] PRIMARY KEY CLUSTERED ([ExtinguisherSystemsId] ASC)
 );
+
+
 

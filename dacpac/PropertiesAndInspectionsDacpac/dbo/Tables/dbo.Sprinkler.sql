@@ -16,7 +16,8 @@
     [FlowRateInspector]        UNIQUEIDENTIFIER NULL,
     [MainSize]                 DECIMAL (18, 2)  NULL,
     [MainLocation]             VARCHAR (50)     NULL,
-    CONSTRAINT [PK_Sprinkler] PRIMARY KEY CLUSTERED ([SprinklerId] ASC),
-    CONSTRAINT [FK_Sprinkler_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+    CONSTRAINT [PK_Sprinkler] PRIMARY KEY CLUSTERED ([SprinklerId] ASC)
 );
+
+
 

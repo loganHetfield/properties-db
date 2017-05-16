@@ -1,8 +1,17 @@
 ﻿CREATE TABLE [dbo].[PropertyContact] (
-    [PropertyId] UNIQUEIDENTIFIER NOT NULL,
-    [ContactId]  UNIQUEIDENTIFIER NOT NULL,
-    CONSTRAINT [PK_PropertyContact] PRIMARY KEY CLUSTERED ([PropertyId] ASC, [ContactId] ASC),
-    CONSTRAINT [FK_PropertyContact_Contact] FOREIGN KEY ([ContactId]) REFERENCES [dbo].[Contact] ([ContactId]),
+    [PropertyContactId]       UNIQUEIDENTIFIER NOT NULL,
+    [PropertyId]              UNIQUEIDENTIFIER NOT NULL,
+    [FirstName]               NVARCHAR (50)    NULL,
+    [LastName]                NVARCHAR (50)    NULL,
+    [BusinessName]            NVARCHAR (50)    NULL,
+    [IsPrimaryContact]        BIT              NULL,
+    [EmergencyContact]        BIT              NULL,
+    [Phone]                   VARCHAR (50)     NULL,
+    [Email]                   VARCHAR (1024)   NULL,
+    [IsAddressSameAsProperty] BIT              NULL,
+    CONSTRAINT [PK_PropertyContact] PRIMARY KEY CLUSTERED ([PropertyContactId] ASC),
     CONSTRAINT [FK_PropertyContact_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 

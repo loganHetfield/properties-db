@@ -8,7 +8,8 @@
     [Model]         VARCHAR (50)     NULL,
     [SerialNumber]  VARCHAR (100)    NULL,
     [Manufacturer]  VARCHAR (50)     NULL,
-    CONSTRAINT [PK_Detector] PRIMARY KEY CLUSTERED ([DetectorId] ASC),
-    CONSTRAINT [FK_Detector_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+    CONSTRAINT [PK_Detector] PRIMARY KEY CLUSTERED ([DetectorId] ASC)
 );
+
+
 

@@ -1,7 +1,21 @@
 ﻿CREATE TABLE [dbo].[Building] (
     [BuildingId]                         UNIQUEIDENTIFIER NOT NULL,
     [PropertyId]                         UNIQUEIDENTIFIER NOT NULL,
-    [StructureId]                        UNIQUEIDENTIFIER NULL,
+    [Name]                               VARCHAR (50)     NULL,
+    [Status]                             INT              NULL,
+    [StartDate]                          DATE             NULL,
+    [EndDate]                            DATE             NULL,
+    [Length]                             INT              NULL,
+    [Width]                              INT              NULL,
+    [Height]                             INT              NULL,
+    [TotalSquareFeet]                    INT              NULL,
+    [TotalExits]                         INT              NULL,
+    [InteriorWallsType]                  INT              NULL,
+    [InteriorDoorsType]                  INT              NULL,
+    [FireDoorsPresent]                   BIT              NULL,
+    [FireDoorsType]                      INT              NULL,
+    [FireLoad]                           INT              NULL,
+    [FireWalls]                          INT              NULL,
     [UniqueOrSpecialFeatures]            VARCHAR (50)     NULL,
     [NumberOfStoriesAboveGrade]          INT              NULL,
     [NumberOfStoriesBelowGrade]          INT              NULL,
@@ -62,7 +76,8 @@
     [SearchAt100Percent]                 VARCHAR (255)    NULL,
     [Notes]                              VARCHAR (255)    NULL,
     CONSTRAINT [PK_Building] PRIMARY KEY CLUSTERED ([BuildingId] ASC),
-    CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId]),
-    CONSTRAINT [FK_Building_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+    CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 

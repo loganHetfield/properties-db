@@ -1,18 +1,16 @@
 ﻿CREATE TABLE [dbo].[Property] (
     [PropertyId]                      UNIQUEIDENTIFIER   NOT NULL,
     [AgencyId]                        UNIQUEIDENTIFIER   NOT NULL,
-    [ContactGroupId]                  UNIQUEIDENTIFIER   NULL,
     [Type]                            INT                NULL,
     [Status]                          INT                NULL,
     [StartDate]                       DATE               NULL,
     [EndDate]                         DATE               NULL,
-    [AddressId]                       UNIQUEIDENTIFIER   NULL,
     [Division]                        INT                NULL,
-    [FireDistrictBatallion]           INT                NULL,
+    [FireDistrictBattalion]           INT                NULL,
     [InspectionDistrict]              INT                NULL,
     [Station]                         INT                NULL,
     [CensusTract]                     DECIMAL (18, 2)    NULL,
-    [PlannningZone]                   INT                NULL,
+    [PlanningZone]                    INT                NULL,
     [ZoneType]                        INT                NULL,
     [ParcelId]                        NVARCHAR (50)      NULL,
     [TaxMapNumber]                    NVARCHAR (50)      NULL,
@@ -33,7 +31,7 @@
     [CreatedBy]                       NVARCHAR (50)      NOT NULL,
     [CreatedDate]                     DATETIMEOFFSET (7) NOT NULL,
     [UpdatedBy]                       NVARCHAR (50)      NOT NULL,
-    [UdatedDate]                      DATETIMEOFFSET (7) NOT NULL,
+    [UpdatedDate]                     DATETIMEOFFSET (7) NOT NULL,
     [FireConfigMajorVersion]          BIGINT             NOT NULL,
     [FireConfigMinorVeresion]         BIGINT             NOT NULL,
     [FireConfigRevsionVersion]        BIGINT             NOT NULL,
@@ -43,6 +41,8 @@
     [FireMdmRevisionVersion]          BIGINT             NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
+
+
 
 
 

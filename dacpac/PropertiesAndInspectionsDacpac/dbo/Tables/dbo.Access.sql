@@ -3,7 +3,8 @@
     [StructureId] UNIQUEIDENTIFIER NOT NULL,
     [Type]        INT              NULL,
     [Location]    VARCHAR (50)     NULL,
-    CONSTRAINT [PK_Access] PRIMARY KEY CLUSTERED ([AccessId] ASC),
-    CONSTRAINT [FK_Access_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+    CONSTRAINT [PK_Access] PRIMARY KEY CLUSTERED ([AccessId] ASC)
 );
+
+
 

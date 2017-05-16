@@ -8,7 +8,8 @@
     [Drain]                VARCHAR (50)     NULL,
     [DrainLocation]        VARCHAR (50)     NULL,
     [CertificationDate]    DATE             NULL,
-    CONSTRAINT [PK_Riser] PRIMARY KEY CLUSTERED ([RiserId] ASC),
-    CONSTRAINT [FK_Riser_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+    CONSTRAINT [PK_Riser] PRIMARY KEY CLUSTERED ([RiserId] ASC)
 );
+
+
 

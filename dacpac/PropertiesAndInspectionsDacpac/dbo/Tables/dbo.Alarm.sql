@@ -7,7 +7,8 @@
     [AreaProtected]       VARCHAR (50)     NULL,
     [AlarmCertification]  VARCHAR (50)     NULL,
     [CertificationDate]   DATE             NULL,
-    CONSTRAINT [PK_Alarm] PRIMARY KEY CLUSTERED ([AlarmId] ASC),
-    CONSTRAINT [FK_Alarm_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+    CONSTRAINT [PK_Alarm] PRIMARY KEY CLUSTERED ([AlarmId] ASC)
 );
+
+
 

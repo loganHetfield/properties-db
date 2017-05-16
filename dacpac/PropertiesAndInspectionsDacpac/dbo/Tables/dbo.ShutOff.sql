@@ -3,7 +3,8 @@
     [StructureId] UNIQUEIDENTIFIER NOT NULL,
     [Type]        INT              NULL,
     [Location]    VARCHAR (50)     NULL,
-    CONSTRAINT [PK_ShutOff] PRIMARY KEY CLUSTERED ([ShutOffId] ASC),
-    CONSTRAINT [FK_ShutOff_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+    CONSTRAINT [PK_ShutOff] PRIMARY KEY CLUSTERED ([ShutOffId] ASC)
 );
+
+
 

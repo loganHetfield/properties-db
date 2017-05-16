@@ -9,7 +9,8 @@
     [StandpipeZone]        VARCHAR (50)     NULL,
     [CertificationNumber]  VARCHAR (50)     NULL,
     [CertificationDate]    DATE             NULL,
-    CONSTRAINT [PK_Standpipe] PRIMARY KEY CLUSTERED ([StandpipeId] ASC),
-    CONSTRAINT [FK_Standpipe_Structure] FOREIGN KEY ([StructureId]) REFERENCES [dbo].[Structure] ([StructureId])
+    CONSTRAINT [PK_Standpipe] PRIMARY KEY CLUSTERED ([StandpipeId] ASC)
 );
+
+
 
