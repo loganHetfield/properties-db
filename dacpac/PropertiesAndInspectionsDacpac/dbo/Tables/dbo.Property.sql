@@ -24,7 +24,7 @@
     [City]                            NVARCHAR (255)     NOT NULL,
     [State]                           INT                NOT NULL,
     [Zip]                             VARCHAR (10)       NOT NULL,
-    [County]                          NVARCHAR (255)     NOT NULL,
+    [County]                          NVARCHAR (255)     NULL,
     [Location]                        [sys].[geography]  NULL,
     [Latitude]                        DECIMAL (9, 6)     NULL,
     [Longitude]                       DECIMAL (9, 6)     NULL,
@@ -35,12 +35,14 @@
     [FireConfigMajorVersion]          BIGINT             NOT NULL,
     [FireConfigMinorVeresion]         BIGINT             NOT NULL,
     [FireConfigRevsionVersion]        BIGINT             NOT NULL,
-    [FireConfigBundleRevisionVersion] BIT                NOT NULL,
+    [FireConfigBundleRevisionVersion] BIGINT             NOT NULL,
     [FireMdmMajorVersion]             BIGINT             NOT NULL,
     [FireMdmMinorVersion]             BIGINT             NOT NULL,
     [FireMdmRevisionVersion]          BIGINT             NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
+
+
 
 
 
