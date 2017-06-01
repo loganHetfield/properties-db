@@ -55,10 +55,13 @@
     [FireWalls]                          INT              NULL,
     [Notes]                              VARCHAR (255)    NULL,
     [RowVersion]                         ROWVERSION       NOT NULL,
+    [IsDeleted]                          BIT              CONSTRAINT [DF_Occupant_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Occupant] PRIMARY KEY CLUSTERED ([OccupantId] ASC),
     CONSTRAINT [FK_Occupant_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId]),
     CONSTRAINT [FK_Occupant_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
 
 

@@ -40,8 +40,11 @@
     [FireMdmMinorVersion]             BIGINT             NOT NULL,
     [FireMdmRevisionVersion]          BIGINT             NOT NULL,
     [RowVersion]                      ROWVERSION         NOT NULL,
+    [IsDeleted]                       BIT                CONSTRAINT [DF_Property_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
+
+
 
 
 

@@ -76,9 +76,13 @@
     [SearchAt75Percent]                  VARCHAR (255)    NULL,
     [SearchAt100Percent]                 VARCHAR (255)    NULL,
     [Notes]                              VARCHAR (255)    NULL,
+    [RowVersion]                         ROWVERSION       NOT NULL,
+    [IsDeleted]                          BIT              CONSTRAINT [DF_Building_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Building] PRIMARY KEY CLUSTERED ([BuildingId] ASC),
     CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
 
 
