@@ -25,7 +25,6 @@
     [State]                           INT                NOT NULL,
     [Zip]                             VARCHAR (10)       NOT NULL,
     [County]                          NVARCHAR (255)     NULL,
-    [Location]                        [sys].[geography]  NULL,
     [Latitude]                        DECIMAL (9, 6)     NULL,
     [Longitude]                       DECIMAL (9, 6)     NULL,
     [CreatedBy]                       NVARCHAR (50)      NOT NULL,
@@ -39,8 +38,11 @@
     [FireMdmMajorVersion]             BIGINT             NOT NULL,
     [FireMdmMinorVersion]             BIGINT             NOT NULL,
     [FireMdmRevisionVersion]          BIGINT             NOT NULL,
+    [RowVersion]                      ROWVERSION         NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
+
+
 
 
 

@@ -16,7 +16,7 @@
     [FireDoorsType]                      INT              NULL,
     [FireLoad]                           INT              NULL,
     [FireWalls]                          INT              NULL,
-    [UniqueOrSpecialFeatures]            VARCHAR (50)     NULL,
+    [UniqueOrSpecialFeatures]            VARCHAR (255)    NULL,
     [NumberOfStoriesAboveGrade]          INT              NULL,
     [NumberOfStoriesBelowGrade]          INT              NULL,
     [NumberOfRoomsOrUnits]               INT              NULL,
@@ -34,6 +34,7 @@
     [UpperFloorConstructionType]         INT              NULL,
     [BelowGradeConstructionType]         INT              NULL,
     [ExteriorWallsType]                  INT              NULL,
+    [ExteriorDoorsType]                  INT              NULL,
     [Stock]                              INT              NULL,
     [BasementUse]                        INT              NULL,
     [AtticUse]                           INT              NULL,
@@ -78,6 +79,8 @@
     CONSTRAINT [PK_Building] PRIMARY KEY CLUSTERED ([BuildingId] ASC),
     CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
 
 

@@ -2,6 +2,9 @@
     [BuildingKnoxBoxId] UNIQUEIDENTIFIER NOT NULL,
     [BuildingId]        UNIQUEIDENTIFIER NOT NULL,
     [Location]          VARCHAR (50)     NULL,
-    CONSTRAINT [PK_BuildingKnoxBox] PRIMARY KEY CLUSTERED ([BuildingKnoxBoxId] ASC)
+    CONSTRAINT [PK_BuildingKnoxBox] PRIMARY KEY CLUSTERED ([BuildingKnoxBoxId] ASC),
+    CONSTRAINT [FK_BuildingKnoxBox_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );
+
+
 

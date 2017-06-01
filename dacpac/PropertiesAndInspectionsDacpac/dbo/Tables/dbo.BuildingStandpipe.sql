@@ -1,6 +1,6 @@
-﻿CREATE TABLE [dbo].[Standpipe] (
-    [StandpipeId]          UNIQUEIDENTIFIER NOT NULL,
-    [StructureId]          UNIQUEIDENTIFIER NOT NULL,
+﻿CREATE TABLE [dbo].[BuildingStandpipe] (
+    [BuildingStandpipeId]  UNIQUEIDENTIFIER NOT NULL,
+    [BuildingId]           UNIQUEIDENTIFIER NOT NULL,
     [Type]                 INT              NULL,
     [Class]                INT              NULL,
     [Size]                 INT              NULL,
@@ -9,8 +9,7 @@
     [StandpipeZone]        VARCHAR (50)     NULL,
     [CertificationNumber]  VARCHAR (50)     NULL,
     [CertificationDate]    DATE             NULL,
-    CONSTRAINT [PK_Standpipe] PRIMARY KEY CLUSTERED ([StandpipeId] ASC)
+    CONSTRAINT [PK_BuildingStandpipe] PRIMARY KEY CLUSTERED ([BuildingStandpipeId] ASC),
+    CONSTRAINT [FK_BuildingStandpipe_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );
-
-
 
