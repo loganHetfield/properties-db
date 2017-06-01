@@ -27,6 +27,7 @@
     [County]                          NVARCHAR (255)     NULL,
     [Latitude]                        DECIMAL (9, 6)     NULL,
     [Longitude]                       DECIMAL (9, 6)     NULL,
+    [Location]                        [sys].[geography]  NULL,
     [CreatedBy]                       NVARCHAR (50)      NOT NULL,
     [CreatedDate]                     DATETIMEOFFSET (7) NOT NULL,
     [UpdatedBy]                       NVARCHAR (50)      NOT NULL,
@@ -41,6 +42,8 @@
     [RowVersion]                      ROWVERSION         NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
+
+
 
 
 

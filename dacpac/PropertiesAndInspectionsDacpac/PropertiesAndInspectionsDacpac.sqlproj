@@ -69,6 +69,7 @@
     <Folder Include=".msbuild" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -125,6 +126,7 @@
     <Build Include="dbo\Tables\dbo.BuildingDetector.sql" />
     <Build Include="dbo\Tables\dbo.BuildingAlarm.sql" />
     <Build Include="dbo\Tables\dbo.BuildingAccess.sql" />
+    <Build Include="dbo\Views\dbo.PropertiesWithCollapsedOccupantsView.sql" />
   </ItemGroup>
   <!-- BEGIN - DAC Version - import targets file -->
   <!-- <Import Project="$(ProjectDir).msbuild\DacVersionFromAssembly.targets" Condition="Exists('$(ProjectDir).msbuild\DacVersionFromAssembly.targets')" />
