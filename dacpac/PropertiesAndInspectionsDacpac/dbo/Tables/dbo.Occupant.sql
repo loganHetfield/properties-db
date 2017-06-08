@@ -2,8 +2,8 @@
     [OccupantId]                         UNIQUEIDENTIFIER NOT NULL,
     [BuildingId]                         UNIQUEIDENTIFIER NOT NULL,
     [PropertyId]                         UNIQUEIDENTIFIER NOT NULL,
-    [OccupantName]                       VARCHAR (50)     NULL,
-    [SuiteUnitLocation]                  VARCHAR (50)     NULL,
+    [OccupantName]                       VARCHAR (50)     NOT NULL,
+    [SuiteUnitLocation]                  VARCHAR (50)     NOT NULL,
     [Status]                             INT              NULL,
     [OccupancyStartDate]                 DATE             NOT NULL,
     [OccupancyEndDate]                   DATE             NULL,
@@ -60,6 +60,8 @@
     CONSTRAINT [FK_Occupant_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId]),
     CONSTRAINT [FK_Occupant_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
 
 

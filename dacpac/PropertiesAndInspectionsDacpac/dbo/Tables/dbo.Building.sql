@@ -70,6 +70,7 @@
     [RequiredPersonnelAt100Percent]      VARCHAR (255)      NULL,
     [RequiredEquipmentAt25Percent]       VARCHAR (255)      NULL,
     [RequiredEquipmentAt50Percent]       VARCHAR (255)      NULL,
+    [RequiredEquipmentAt75Percent]       VARCHAR (255)      NULL,
     [RequiredEquipmentAt100Percent]      VARCHAR (255)      NULL,
     [SearchAt25Percent]                  VARCHAR (255)      NULL,
     [SearchAt50Percent]                  VARCHAR (255)      NULL,
@@ -81,6 +82,8 @@
     CONSTRAINT [PK_Building] PRIMARY KEY CLUSTERED ([BuildingId] ASC),
     CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
 
 
