@@ -18,7 +18,7 @@
     [Notes]                           NVARCHAR (255)     NULL,
     [NumberOrMilepost]                VARCHAR (50)       NOT NULL,
     [StreetPrefix]                    INT                NULL,
-    [StreetOrHighway]                 VARCHAR (50)       NOT NULL,
+    [StreetOrHighway]                 VARCHAR (100)      NOT NULL,
     [StreetType]                      INT                NULL,
     [StreetSuffix]                    INT                NULL,
     [City]                            NVARCHAR (255)     NOT NULL,
@@ -43,6 +43,8 @@
     [IsDeleted]                       BIT                CONSTRAINT [DF_Property_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
+
+
 
 
 
