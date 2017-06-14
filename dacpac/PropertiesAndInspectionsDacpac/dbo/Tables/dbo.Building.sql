@@ -93,3 +93,10 @@
 
 
 
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Unique_Building_Name]
+    ON [dbo].[Building]([PropertyId] ASC, [Name] ASC);
+
