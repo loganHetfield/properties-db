@@ -3,7 +3,7 @@
     [BuildingId]                         UNIQUEIDENTIFIER NOT NULL,
     [PropertyId]                         UNIQUEIDENTIFIER NOT NULL,
     [OccupantName]                       VARCHAR (50)     NOT NULL,
-    [SuiteUnitLocation]                  VARCHAR (50)     NOT NULL,
+    [SuiteUnitLocation]                  VARCHAR (50)     NULL,
     [Status]                             INT              NULL,
     [OccupancyStartDate]                 DATE             NOT NULL,
     [OccupancyEndDate]                   DATE             NULL,
@@ -68,4 +68,13 @@
 
 
 
+
+
+
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Occupant_UniqueOccupantSuiteForBuilding]
+    ON [dbo].[Occupant]([BuildingId] ASC, [OccupantName] ASC, [SuiteUnitLocation] ASC);
 
