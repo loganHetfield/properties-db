@@ -79,9 +79,15 @@
     [Notes]                              NVARCHAR (255)     NULL,
     [RowVersion]                         ROWVERSION         NOT NULL,
     [IsDeleted]                          BIT                CONSTRAINT [DF_Building_IsDeleted] DEFAULT ((0)) NOT NULL,
+    [CreatedBy]                          NVARCHAR (50)      NOT NULL,
+    [CreatedDate]                        DATETIMEOFFSET (7) NOT NULL,
+    [UpdatedBy]                          NVARCHAR (50)      NOT NULL,
+    [UpdatedDate]                        DATETIMEOFFSET (7) NOT NULL,
     CONSTRAINT [PK_Building] PRIMARY KEY CLUSTERED ([BuildingId] ASC),
     CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
 
 
