@@ -2,8 +2,8 @@
     [OccupantId]                         UNIQUEIDENTIFIER NOT NULL,
     [BuildingId]                         UNIQUEIDENTIFIER NOT NULL,
     [PropertyId]                         UNIQUEIDENTIFIER NOT NULL,
-    [OccupantName]                       VARCHAR (50)     NOT NULL,
-    [SuiteUnitLocation]                  VARCHAR (50)     NULL,
+    [OccupantName]                       NVARCHAR (50)    NOT NULL,
+    [SuiteUnitLocation]                  NVARCHAR (50)    NULL,
     [Status]                             INT              NULL,
     [OccupancyStartDate]                 DATE             NOT NULL,
     [OccupancyEndDate]                   DATE             NULL,
@@ -13,10 +13,10 @@
     [ContentValue]                       DECIMAL (18, 2)  NULL,
     [SecurityType]                       INT              NULL,
     [DoesSecurityCarryKeys]              BIT              NULL,
-    [ExtinguisherMonitorCompany]         VARCHAR (50)     NULL,
-    [ExtinguisherMonitorCompanyPhone]    VARCHAR (50)     NULL,
-    [AlarmsMonitoringCompany]            VARCHAR (50)     NULL,
-    [AlarmsMonitoringCompanyPhone]       VARCHAR (50)     NULL,
+    [ExtinguisherMonitorCompany]         NVARCHAR (50)    NULL,
+    [ExtinguisherMonitorCompanyPhone]    NVARCHAR (50)    NULL,
+    [AlarmsMonitoringCompany]            NVARCHAR (50)    NULL,
+    [AlarmsMonitoringCompanyPhone]       NVARCHAR (50)    NULL,
     [OccupancyClassicfication]           INT              NULL,
     [StandardIndustrialClassification]   INT              NULL,
     [OccupancyLoadRated]                 INT              NULL,
@@ -41,7 +41,7 @@
     [LocalOccCode]                       INT              NULL,
     [CertificateOfOccupancyIssued]       BIT              NULL,
     [CertificateOfOccupancyDateOfIssue]  DATE             NULL,
-    [PreviousAndPartialCOIssued]         VARCHAR (255)    NULL,
+    [PreviousAndPartialCOIssued]         NVARCHAR (255)   NULL,
     [Length]                             INT              NULL,
     [Width]                              INT              NULL,
     [Height]                             INT              NULL,
@@ -53,13 +53,15 @@
     [FireDoorsType]                      INT              NULL,
     [FireLoad]                           INT              NULL,
     [FireWalls]                          INT              NULL,
-    [Notes]                              VARCHAR (255)    NULL,
+    [Notes]                              NVARCHAR (255)   NULL,
     [RowVersion]                         ROWVERSION       NOT NULL,
     [IsDeleted]                          BIT              CONSTRAINT [DF_Occupant_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Occupant] PRIMARY KEY CLUSTERED ([OccupantId] ASC),
     CONSTRAINT [FK_Occupant_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId]),
     CONSTRAINT [FK_Occupant_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
 
 

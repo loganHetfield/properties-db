@@ -1,25 +1,27 @@
 ﻿CREATE TABLE [dbo].[Chemical] (
     [ChemicalID]                 UNIQUEIDENTIFIER NOT NULL,
     [Chemical]                   UNIQUEIDENTIFIER NULL,
-    [MaxUnitsStored]             VARCHAR (50)     NULL,
+    [MaxUnitsStored]             NVARCHAR (50)    NULL,
     [UnitType]                   INT              NULL,
-    [AverageStored]              VARCHAR (50)     NULL,
-    [ChemicalLocation]           VARCHAR (50)     NULL,
-    [StorageType]                VARCHAR (50)     NULL,
+    [AverageStored]              NVARCHAR (50)    NULL,
+    [ChemicalLocation]           NVARCHAR (50)    NULL,
+    [StorageType]                NVARCHAR (50)    NULL,
     [IsPressureHazard]           BIT              NULL,
     [IsReactiveHazard]           BIT              NULL,
     [IsAcuteHazard]              BIT              NULL,
     [IsChronicHazard]            BIT              NULL,
     [IsMsdsOnSite]               BIT              NULL,
-    [MaxDailyAmount]             VARCHAR (50)     NULL,
+    [MaxDailyAmount]             NVARCHAR (50)    NULL,
     [PhysicalState]              INT              NULL,
-    [StoragePressure]            VARCHAR (50)     NULL,
-    [Temperature]                VARCHAR (50)     NULL,
-    [DaysOnSite]                 VARCHAR (50)     NULL,
-    [AnnualUsage]                VARCHAR (50)     NULL,
-    [SiteSpecificConsiderations] VARCHAR (50)     NULL,
+    [StoragePressure]            NVARCHAR (50)    NULL,
+    [Temperature]                NVARCHAR (50)    NULL,
+    [DaysOnSite]                 NVARCHAR (50)    NULL,
+    [AnnualUsage]                NVARCHAR (50)    NULL,
+    [SiteSpecificConsiderations] NVARCHAR (50)    NULL,
     [Container]                  INT              NULL,
     [NumberOfContaineres]        INT              NULL,
     CONSTRAINT [PK_Chemical] PRIMARY KEY CLUSTERED ([ChemicalID] ASC)
 );
+
+
 
