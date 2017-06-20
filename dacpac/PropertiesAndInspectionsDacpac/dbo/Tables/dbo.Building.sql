@@ -3,7 +3,7 @@
     [PropertyId]                         UNIQUEIDENTIFIER   NOT NULL,
     [Name]                               NVARCHAR (50)      NULL,
     [Status]                             INT                NULL,
-    [StartDate]                          DATETIME           NOT NULL,
+    [StartDate]                          DATETIMEOFFSET (7) NOT NULL,
     [EndDate]                            DATE               NULL,
     [Length]                             INT                NULL,
     [Width]                              INT                NULL,
@@ -86,8 +86,6 @@
     CONSTRAINT [PK_Building] PRIMARY KEY CLUSTERED ([BuildingId] ASC),
     CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
-
-
 
 
 
