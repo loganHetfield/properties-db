@@ -129,6 +129,7 @@
     <Build Include="dbo\Tables\dbo.PropertyOtherWaterSource.sql" />
     <Build Include="dbo\Tables\dbo.PropertyNote.sql" />
     <Build Include="dbo\Tables\dbo.PropertyHydrant.sql" />
+    <Build Include="dbo\Tables\dbo.PropertyImage.sql" />
   </ItemGroup>
   <!-- BEGIN - DAC Version - import targets file -->
   <!-- <Import Project="$(ProjectDir).msbuild\DacVersionFromAssembly.targets" Condition="Exists('$(ProjectDir).msbuild\DacVersionFromAssembly.targets')" />
