@@ -94,12 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\dbo.Tank.sql" />
-    <Build Include="dbo\Tables\dbo.SpecialHazard.sql" />
     <Build Include="dbo\Tables\dbo.Property.sql" />
-    <Build Include="dbo\Tables\dbo.OtherWaterSource.sql" />
     <Build Include="dbo\Tables\dbo.OccupantChemicalTank.sql" />
     <Build Include="dbo\Tables\dbo.Occupant.sql" />
-    <Build Include="dbo\Tables\dbo.Hydrant.sql" />
     <Build Include="dbo\Tables\dbo.Event.sql" />
     <Build Include="dbo\Tables\dbo.Chemical.sql" />
     <Build Include="dbo\Tables\dbo.Building.sql" />
@@ -128,6 +125,10 @@
     <Build Include="dbo\Tables\dbo.BuildingAccess.sql" />
     <Build Include="dbo\Views\dbo.PropertiesWithCollapsedOccupantsView.sql" />
     <Build Include="dbo\Tables\dbo.EventData.sql" />
+    <Build Include="dbo\Tables\dbo.PropertySpecialHazard.sql" />
+    <Build Include="dbo\Tables\dbo.PropertyOtherWaterSource.sql" />
+    <Build Include="dbo\Tables\dbo.PropertyNote.sql" />
+    <Build Include="dbo\Tables\dbo.PropertyHydrant.sql" />
   </ItemGroup>
   <!-- BEGIN - DAC Version - import targets file -->
   <!-- <Import Project="$(ProjectDir).msbuild\DacVersionFromAssembly.targets" Condition="Exists('$(ProjectDir).msbuild\DacVersionFromAssembly.targets')" />

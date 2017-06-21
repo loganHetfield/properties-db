@@ -1,28 +1,27 @@
 ﻿CREATE TABLE [dbo].[Property] (
     [PropertyId]                      UNIQUEIDENTIFIER   NOT NULL,
     [AgencyId]                        UNIQUEIDENTIFIER   NOT NULL,
-    [Type]                            INT                NULL,
-    [Status]                          INT                NULL,
+    [TypeId]                          INT                NULL,
+    [StatusId]                        INT                NULL,
     [StartDate]                       DATE               NULL,
     [EndDate]                         DATE               NULL,
-    [Division]                        INT                NULL,
-    [FireDistrictBattalion]           INT                NULL,
-    [InspectionDistrict]              INT                NULL,
-    [Station]                         INT                NULL,
+    [DivisionId]                      INT                NULL,
+    [FireDistrictBattalionId]         INT                NULL,
+    [InspectionDistrictId]            INT                NULL,
+    [StationId]                       INT                NULL,
     [CensusTract]                     DECIMAL (18, 2)    NULL,
-    [PlanningZone]                    INT                NULL,
-    [ZoneType]                        INT                NULL,
+    [PlanningZoneId]                  INT                NULL,
+    [ZoneTypeId]                      INT                NULL,
     [ParcelId]                        NVARCHAR (50)      NULL,
     [TaxMapNumber]                    NVARCHAR (50)      NULL,
     [PropertyValue]                   DECIMAL (18, 2)    NULL,
-    [Notes]                           NVARCHAR (255)     NULL,
     [NumberOrMilepost]                NVARCHAR (50)      NOT NULL,
-    [StreetPrefix]                    INT                NULL,
+    [StreetPrefixId]                  INT                NULL,
     [StreetOrHighway]                 NVARCHAR (100)     NOT NULL,
-    [StreetType]                      INT                NULL,
-    [StreetSuffix]                    INT                NULL,
+    [StreetTypeId]                    INT                NULL,
+    [StreetSuffixId]                  INT                NULL,
     [City]                            NVARCHAR (255)     NOT NULL,
-    [State]                           INT                NOT NULL,
+    [StateId]                         INT                NOT NULL,
     [Zip]                             NVARCHAR (50)      NOT NULL,
     [County]                          NVARCHAR (255)     NULL,
     [Latitude]                        DECIMAL (9, 6)     NULL,
@@ -43,6 +42,8 @@
     [IsDeleted]                       BIT                CONSTRAINT [DF_Property_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
+
+
 
 
 

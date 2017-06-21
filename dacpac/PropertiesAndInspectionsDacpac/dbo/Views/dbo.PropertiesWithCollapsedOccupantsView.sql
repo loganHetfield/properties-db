@@ -1,4 +1,5 @@
 ﻿
+
 CREATE VIEW [dbo].[PropertiesWithCollapsedOccupantsView]
 AS
 SELECT        
@@ -14,10 +15,10 @@ SELECT
 	prop.[City] as "City",
 	null as "State",
 	prop.[Zip] as "PostalCode",
-	prop.[StreetPrefix] as "StreetPrefixId", 
-	prop.[StreetType] as "StreetTypeId",
-	prop.[StreetSuffix] as "StreetSuffixId",
-	prop.[State] as "StateId", 
+	prop.StreetPrefixId, 
+	prop.StreetTypeId,
+	prop.StreetSuffixId,
+	prop.StateId, 
 	'[' + STUFF
 	((
 		SELECT ',"' + REPLACE(REPLACE(occ1.[OccupantName], '\', '\\'), '"', '\"') + '"'
