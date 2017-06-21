@@ -1,9 +1,11 @@
 ﻿CREATE TABLE [dbo].[PropertySpecialHazard] (
-    [SpecialHazardId]     UNIQUEIDENTIFIER NOT NULL,
-    [PropertyId]          UNIQUEIDENTIFIER NOT NULL,
-    [SpecialHazardTypeId] INT              NULL,
-    [Quantity]            INT              NULL,
-    CONSTRAINT [PK_SpecialHazard] PRIMARY KEY CLUSTERED ([SpecialHazardId] ASC),
-    CONSTRAINT [FK_SpecialHazard_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
+    [PropertySpecialHazardId] UNIQUEIDENTIFIER NOT NULL,
+    [PropertyId]              UNIQUEIDENTIFIER NOT NULL,
+    [SpecialHazardTypeId]     INT              NULL,
+    [Quantity]                INT              NULL,
+    CONSTRAINT [PK_PropertySpecialHazard] PRIMARY KEY CLUSTERED ([PropertySpecialHazardId] ASC),
+    CONSTRAINT [FK_PropertySpecialHazard_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
