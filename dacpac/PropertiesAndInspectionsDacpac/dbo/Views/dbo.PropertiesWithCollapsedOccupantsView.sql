@@ -1,5 +1,4 @@
 ﻿
-
 CREATE VIEW [dbo].[PropertiesWithCollapsedOccupantsView]
 AS
 SELECT        
@@ -7,34 +6,34 @@ SELECT
 	prop.[AgencyId] as "AgencyId",
 	prop.[Location] as "GeoLocation",
 	prop.[NumberOrMilepost] as "StreetNumber",
-	null as "StreetPrefix", 
+	prop.[StreetPrefix] as "StreetPrefix", 
 	prop.[StreetOrHighway] as "StreetName",
-	null as "StreetType",
-	null as "StreetSuffix",
+	prop.[StreetType] as "StreetType",
+	prop.[StreetSuffix] as "StreetSuffix",
 	prop.[County] as "County",
 	prop.[City] as "City",
-	null as "State",
+	prop.[State] as "State", 
 	prop.[Zip] as "PostalCode",
-	prop.StreetPrefixId, 
-	prop.StreetTypeId,
-	prop.StreetSuffixId,
-	prop.StateId, 
+	prop.[StreetPrefixId] as "StreetPrefixId", 
+	prop.[StreetTypeId] as "StreetTypeId",
+	prop.[StreetSuffixId] as "StreetSuffixId",
+	prop.[StateId] as "StateId", 
 	'[' + STUFF
 	((
 		SELECT ',"' + REPLACE(REPLACE(occ1.[OccupantName], '\', '\\'), '"', '\"') + '"'
-		FROM dbo.[Occupant] AS occ1
-		WHERE prop.[PropertyId] = occ1.[PropertyId]
-		FOR XML PATH(''), TYPE ).value('.[1]', 'nvarchar(max)'), 
+        FROM dbo.[Occupant] AS occ1
+        WHERE prop.[PropertyId] = occ1.[PropertyId]
+        FOR XML PATH(''), TYPE ).value('.[1]', 'nvarchar(max)'), 
 		1, 
 		1, 
 		''
 	) + ']' AS "OccupantNames",
 	'[' + STUFF
 	((
-		SELECT ',["' + REPLACE(REPLACE(occ2.[OccupantName], '\', '\\'), '"', '\"') + '","' + CONVERT(NVARCHAR(MAX), occ2.[OccupantId]) + '"]'
-		FROM dbo.[Occupant] AS occ2
-		WHERE prop.[PropertyId] = occ2.[PropertyId]
-		FOR XML PATH(''), TYPE ).value('.[1]', 'nvarchar(max)'), 
+		SELECT ',{"OccupantId":"' + CONVERT(NVARCHAR(MAX), occ2.[OccupantId]) + '","OccupantName":"' + REPLACE(REPLACE(occ2.[OccupantName], '\', '\\'), '"', '\"') + '"}'
+        FROM dbo.[Occupant] AS occ2
+        WHERE prop.[PropertyId] = occ2.[PropertyId]
+        FOR XML PATH(''), TYPE ).value('.[1]', 'nvarchar(max)'), 
 		1, 
 		1, 
 		''

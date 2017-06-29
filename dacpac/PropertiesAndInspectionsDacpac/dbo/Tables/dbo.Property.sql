@@ -17,11 +17,15 @@
     [PropertyValue]                   DECIMAL (18, 2)    NULL,
     [NumberOrMilepost]                NVARCHAR (50)      NOT NULL,
     [StreetPrefixId]                  INT                NULL,
+    [StreetPrefix]                    NVARCHAR (255)     NULL,
     [StreetOrHighway]                 NVARCHAR (100)     NOT NULL,
     [StreetTypeId]                    INT                NULL,
+    [StreetType]                      NVARCHAR (255)     NULL,
     [StreetSuffixId]                  INT                NULL,
+    [StreetSuffix]                    NVARCHAR (255)     NULL,
     [City]                            NVARCHAR (255)     NOT NULL,
     [StateId]                         INT                NOT NULL,
+    [State]                           NVARCHAR (255)     NULL,
     [Zip]                             NVARCHAR (50)      NOT NULL,
     [County]                          NVARCHAR (255)     NULL,
     [Latitude]                        DECIMAL (9, 6)     NULL,
@@ -42,6 +46,8 @@
     [IsDeleted]                       BIT                CONSTRAINT [DF_Property_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
+
+
 
 
 
