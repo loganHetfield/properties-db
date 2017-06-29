@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[BuildingDetector] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'BuildingDetector')
+BEGIN
+
+CREATE TABLE [dbo].[BuildingDetector] (
     [BuildingDetectorId] UNIQUEIDENTIFIER NOT NULL,
     [BuildingId]         UNIQUEIDENTIFIER NOT NULL,
     [Type]               INT              NULL,
@@ -12,5 +15,6 @@
     CONSTRAINT [FK_BuildingDetector_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );
 
+END
 
 

@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[OccupantDetector] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'OccupantDetector')
+BEGIN
+
+CREATE TABLE [dbo].[OccupantDetector] (
     [OccupantDetectorId] UNIQUEIDENTIFIER NOT NULL,
     [OccupantId]         UNIQUEIDENTIFIER NOT NULL,
     [Type]               INT              NULL,
@@ -11,6 +14,8 @@
     CONSTRAINT [PK_OccupantDetector] PRIMARY KEY CLUSTERED ([OccupantDetectorId] ASC),
     CONSTRAINT [FK_OccupantDetector_Occupant] FOREIGN KEY ([OccupantId]) REFERENCES [dbo].[Occupant] ([OccupantId])
 );
+
+END
 
 
 

@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[PropertyNote] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'PropertyNote')
+BEGIN
+
+CREATE TABLE [dbo].[PropertyNote] (
     [PropertyNoteId] UNIQUEIDENTIFIER NOT NULL,
     [PropertyId]     UNIQUEIDENTIFIER NOT NULL,
     [Note]           VARCHAR (255)    NULL,
@@ -6,3 +9,4 @@
     CONSTRAINT [FK_PropertyNote_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
 
+END

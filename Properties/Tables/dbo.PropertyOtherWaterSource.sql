@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[PropertyOtherWaterSource] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'PropertyOtherWaterSource')
+BEGIN
+
+CREATE TABLE [dbo].[PropertyOtherWaterSource] (
     [PropertyOtherWaterSourceId] UNIQUEIDENTIFIER NOT NULL,
     [PropertyId]                 UNIQUEIDENTIFIER NOT NULL,
     [WaterSourceType]            NVARCHAR (50)    NULL,
@@ -9,5 +12,5 @@
     CONSTRAINT [FK_PropertyOtherWaterSource_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
 
-
+END
 

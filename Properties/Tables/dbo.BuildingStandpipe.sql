@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[BuildingStandpipe] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'BuildingStandpipe')
+BEGIN
+
+CREATE TABLE [dbo].[BuildingStandpipe] (
     [BuildingStandpipeId]  UNIQUEIDENTIFIER NOT NULL,
     [BuildingId]           UNIQUEIDENTIFIER NOT NULL,
     [Type]                 INT              NULL,
@@ -13,5 +16,6 @@
     CONSTRAINT [FK_BuildingStandpipe_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );
 
+END
 
 

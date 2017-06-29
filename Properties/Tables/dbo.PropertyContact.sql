@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[PropertyContact] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'PropertyContact')
+BEGIN
+
+CREATE TABLE [dbo].[PropertyContact] (
     [PropertyContactId]       UNIQUEIDENTIFIER NOT NULL,
     [PropertyId]              UNIQUEIDENTIFIER NOT NULL,
     [FirstName]               NVARCHAR (50)    NULL,
@@ -22,7 +25,7 @@
     CONSTRAINT [FK_PropertyContact_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
 
-
+END
 
 
 

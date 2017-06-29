@@ -1,4 +1,5 @@
-﻿
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'PropertiesWithCollapsedOccupantsView')
+BEGIN
 
 CREATE VIEW [dbo].[PropertiesWithCollapsedOccupantsView]
 AS
@@ -40,6 +41,8 @@ SELECT
 		''
 	) + ']' AS "OccupantMapping",
 	(SELECT CAST(MAX(ver.[RowVersion]) AS BIGINT) FROM (SELECT prop.[RowVersion] UNION SELECT occ3.[RowVersion] FROM dbo.[Occupant] AS occ3 ) ver) AS "Watermark",
-	prop.[IsDeleted]
-	
+	prop.[IsDeleted]	
+
 FROM dbo.[Property] AS prop
+
+END

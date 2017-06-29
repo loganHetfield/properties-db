@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[BuildingAccess] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'BuildingAccess')
+BEGIN
+
+CREATE TABLE [dbo].[BuildingAccess] (
     [BuildingAccessId] UNIQUEIDENTIFIER NOT NULL,
     [BuildingId]       UNIQUEIDENTIFIER NOT NULL,
     [Type]             INT              NULL,
@@ -7,5 +10,5 @@
     CONSTRAINT [FK_BuildingAccess_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );
 
-
+END
 

@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[OccupantAccess] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'OccupantAccess')
+BEGIN
+
+CREATE TABLE [dbo].[OccupantAccess] (
     [OccupantAccessId] UNIQUEIDENTIFIER NOT NULL,
     [OccupantId]       UNIQUEIDENTIFIER NOT NULL,
     [Type]             INT              NULL,
@@ -7,5 +10,4 @@
     CONSTRAINT [FK_OccupantAccess_Occupant] FOREIGN KEY ([OccupantId]) REFERENCES [dbo].[Occupant] ([OccupantId])
 );
 
-
-
+END

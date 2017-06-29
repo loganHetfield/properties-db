@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[PropertySpecialHazard] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'PropertySpecialHazard')
+BEGIN
+
+CREATE TABLE [dbo].[PropertySpecialHazard] (
     [PropertySpecialHazardId] UNIQUEIDENTIFIER NOT NULL,
     [PropertyId]              UNIQUEIDENTIFIER NOT NULL,
     [SpecialHazardTypeId]     INT              NULL,
@@ -9,7 +12,6 @@
     CONSTRAINT [FK_PropertySpecialHazard_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
 
-
-
+END
 
 

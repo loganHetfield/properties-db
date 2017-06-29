@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[Chemical] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'Chemical')
+BEGIN
+
+CREATE TABLE [dbo].[Chemical] (
     [ChemicalID]                 UNIQUEIDENTIFIER NOT NULL,
     [Chemical]                   UNIQUEIDENTIFIER NULL,
     [MaxUnitsStored]             NVARCHAR (50)    NULL,
@@ -23,5 +26,5 @@
     CONSTRAINT [PK_Chemical] PRIMARY KEY CLUSTERED ([ChemicalID] ASC)
 );
 
-
+END
 

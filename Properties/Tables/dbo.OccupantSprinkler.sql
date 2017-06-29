@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[OccupantSprinkler] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'OccupantSprinkler')
+BEGIN
+
+CREATE TABLE [dbo].[OccupantSprinkler] (
     [OccupantSprinklerId]      UNIQUEIDENTIFIER NOT NULL,
     [OccupantId]               UNIQUEIDENTIFIER NOT NULL,
     [Type]                     INT              NULL,
@@ -20,5 +23,6 @@
     CONSTRAINT [FK_OccupantSprinkler_Occupant] FOREIGN KEY ([OccupantId]) REFERENCES [dbo].[Occupant] ([OccupantId])
 );
 
+END
 
 

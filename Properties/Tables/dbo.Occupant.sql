@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[Occupant] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'Occupant')
+BEGIN
+
+CREATE TABLE [dbo].[Occupant] (
     [OccupantId]                         UNIQUEIDENTIFIER   NOT NULL,
     [BuildingId]                         UNIQUEIDENTIFIER   NOT NULL,
     [PropertyId]                         UNIQUEIDENTIFIER   NOT NULL,
@@ -65,24 +68,8 @@
     CONSTRAINT [FK_Occupant_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-GO
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Occupant_UniqueOccupantSuiteForBuilding]
     ON [dbo].[Occupant]([BuildingId] ASC, [OccupantName] ASC, [SuiteUnitLocation] ASC);
+
+END
 

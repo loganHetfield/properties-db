@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[BuildingRiser] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'BuildingRiser')
+BEGIN
+
+CREATE TABLE [dbo].[BuildingRiser] (
     [BuildingRiserId]      UNIQUEIDENTIFIER NOT NULL,
     [BuildingId]           UNIQUEIDENTIFIER NOT NULL,
     [IdentificationNumber] NVARCHAR (50)    NULL,
@@ -11,6 +14,8 @@
     CONSTRAINT [PK_BuildingRiser] PRIMARY KEY CLUSTERED ([BuildingRiserId] ASC),
     CONSTRAINT [FK_BuildingRiser_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );
+
+END
 
 
 

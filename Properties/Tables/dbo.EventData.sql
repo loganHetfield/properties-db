@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[EventData] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'EventData')
+BEGIN
+
+CREATE TABLE [dbo].[EventData] (
     [EventDataId]    UNIQUEIDENTIFIER NOT NULL,
     [EventId]        UNIQUEIDENTIFIER NOT NULL,
     [EventDataKey]   NVARCHAR (50)    NOT NULL,
@@ -7,3 +10,4 @@
     CONSTRAINT [FK_EventData_Event] FOREIGN KEY ([EventId]) REFERENCES [dbo].[Event] ([EventId])
 );
 
+END

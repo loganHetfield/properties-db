@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[Property] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'Property')
+BEGIN
+
+CREATE TABLE [dbo].[Property] (
     [PropertyId]                      UNIQUEIDENTIFIER   NOT NULL,
     [AgencyId]                        UNIQUEIDENTIFIER   NOT NULL,
     [TypeId]                          INT                NULL,
@@ -43,7 +46,7 @@
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
 
-
+END
 
 
 

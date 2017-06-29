@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[OccupantChemicalTank] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'OccupantChemicalTank')
+BEGIN
+
+CREATE TABLE [dbo].[OccupantChemicalTank] (
     [OccupantChemicalTankId] UNIQUEIDENTIFIER NOT NULL,
     [ChemicalId]             UNIQUEIDENTIFIER NULL,
     [TankId]                 UNIQUEIDENTIFIER NULL,
@@ -9,3 +12,4 @@
     CONSTRAINT [FK_OccupantChemicalTank_Tank] FOREIGN KEY ([TankId]) REFERENCES [dbo].[Tank] ([TankId])
 );
 
+END

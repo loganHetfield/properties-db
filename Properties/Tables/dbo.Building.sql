@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[Building] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'Building')
+BEGIN
+
+CREATE TABLE [dbo].[Building] (
     [BuildingId]                         UNIQUEIDENTIFIER   NOT NULL,
     [PropertyId]                         UNIQUEIDENTIFIER   NOT NULL,
     [Name]                               NVARCHAR (50)      NULL,
@@ -87,26 +90,8 @@
     CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-GO
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Unique_Building_Name]
     ON [dbo].[Building]([PropertyId] ASC, [Name] ASC);
+
+END
 

@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[OccupantStandpipe] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'OccupantStandpipe')
+BEGIN
+
+CREATE TABLE [dbo].[OccupantStandpipe] (
     [OccupantStandpipeId]  UNIQUEIDENTIFIER NOT NULL,
     [OccupantId]           UNIQUEIDENTIFIER NOT NULL,
     [Type]                 INT              NULL,
@@ -13,5 +16,5 @@
     CONSTRAINT [FK_OccupantStandpipe_Occupant] FOREIGN KEY ([OccupantId]) REFERENCES [dbo].[Occupant] ([OccupantId])
 );
 
-
+END
 

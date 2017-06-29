@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[OccupantKnoxBox] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'OccupantKnoxBox')
+BEGIN
+
+CREATE TABLE [dbo].[OccupantKnoxBox] (
     [OccupantKnoxBoxId] UNIQUEIDENTIFIER NOT NULL,
     [OccupantId]        UNIQUEIDENTIFIER NOT NULL,
     [Location]          NVARCHAR (50)    NULL,
@@ -6,5 +9,5 @@
     CONSTRAINT [FK_OccupantKnoxBox_Occupant] FOREIGN KEY ([OccupantId]) REFERENCES [dbo].[Occupant] ([OccupantId])
 );
 
-
+END
 

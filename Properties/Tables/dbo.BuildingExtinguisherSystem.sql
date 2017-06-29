@@ -1,4 +1,7 @@
-﻿CREATE TABLE [dbo].[BuildingExtinguisherSystem] (
+﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'BuildingExtinguisherSystem')
+BEGIN
+
+CREATE TABLE [dbo].[BuildingExtinguisherSystem] (
     [BuildingExtinguisherSystemsId] UNIQUEIDENTIFIER NOT NULL,
     [BuildingId]                    UNIQUEIDENTIFIER NOT NULL,
     [ExtinguishingSystem]           INT              NULL,
@@ -13,5 +16,5 @@
     CONSTRAINT [FK_BuildingExtinguisherSystem_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );
 
-
+END
 
