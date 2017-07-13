@@ -5,9 +5,12 @@
     [Quantity]                INT              NULL,
     [ImageId]                 UNIQUEIDENTIFIER NULL,
     [ThumbImageId]            UNIQUEIDENTIFIER NULL,
+    [FileName]                VARCHAR (255)    NULL,
     CONSTRAINT [PK_PropertySpecialHazard] PRIMARY KEY CLUSTERED ([PropertySpecialHazardId] ASC),
     CONSTRAINT [FK_PropertySpecialHazard_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
 
 
