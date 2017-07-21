@@ -6,9 +6,13 @@
     [ImageId]                 UNIQUEIDENTIFIER NULL,
     [ThumbImageId]            UNIQUEIDENTIFIER NULL,
     [FileName]                VARCHAR (255)    NULL,
+    [Width]                   INT              NULL,
+    [Height]                  INT              NULL,
     CONSTRAINT [PK_PropertySpecialHazard] PRIMARY KEY CLUSTERED ([PropertySpecialHazardId] ASC),
     CONSTRAINT [FK_PropertySpecialHazard_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
+
+
 
 
 
