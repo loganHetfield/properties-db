@@ -42,34 +42,12 @@ CREATE TABLE [dbo].[Property] (
     [FireMdmMinorVersion]             BIGINT             NOT NULL,
     [FireMdmRevisionVersion]          BIGINT             NOT NULL,
     [RowVersion]                      ROWVERSION         NOT NULL,
-    [IsDeleted]                       BIT                CONSTRAINT [DF_Property_IsDeleted] DEFAULT ((0)) NOT NULL,
+    [IsDeleted]                       BIT                
+	CONSTRAINT [DF_Property_IsDeleted] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Property] PRIMARY KEY CLUSTERED ([PropertyId] ASC)
 );
 
+CREATE NONCLUSTERED INDEX [IX_Property] ON [dbo].[Property]([PropertyId] ASC);
+
 END
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_Property]
-    ON [dbo].[Property]([PropertyId] ASC);
 

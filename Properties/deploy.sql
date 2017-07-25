@@ -61,6 +61,10 @@ PRINT 'Processing file: .\Tables\dbo.EventData.sql...'
 GO
 :r .\Tables\dbo.EventData.sql
 
+PRINT 'Processing file: .\Tables\dbo.Image.sql...'
+GO
+:r .\Tables\dbo.Image.sql
+
 PRINT 'Processing file: .\Tables\dbo.Occupant.sql...'
 GO
 :r .\Tables\dbo.Occupant.sql
@@ -129,10 +133,6 @@ PRINT 'Processing file: .\Tables\dbo.PropertyHydrant.sql...'
 GO
 :r .\Tables\dbo.PropertyHydrant.sql
 
-PRINT 'Processing file: .\Tables\dbo.PropertyImage.sql...'
-GO
-:r .\Tables\dbo.PropertyImage.sql
-
 PRINT 'Processing file: .\Tables\dbo.PropertyNote.sql...'
 GO
 :r .\Tables\dbo.PropertyNote.sql
@@ -148,6 +148,14 @@ GO
 PRINT 'Processing file: .\Tables\dbo.Tank.sql...'
 GO
 :r .\Tables\dbo.Tank.sql
+
+PRINT 'Processing file: .\AlterTables\PropertyNoteAddColumns.sql...'
+GO
+:r .\AlterTables\PropertyNoteAddColumns.sql
+
+PRINT 'Processing file: .\AlterTables\PropertySpecialHazardAddColumns.sql...'
+GO
+:r .\AlterTables\PropertySpecialHazardAddColumns.sql
 
 PRINT 'Processing file: .\Views\dbo.PropertiesWithCollapsedOccupantsView.sql...'
 GO

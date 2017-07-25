@@ -63,7 +63,6 @@
     <Folder Include="schemas\template" />
     <Folder Include="schemas\template\tables" />
     <Folder Include="publish" />
-    <Folder Include="security" />
     <Folder Include="scripts" />
     <Folder Include=".build_scripts" />
     <Folder Include=".msbuild" />

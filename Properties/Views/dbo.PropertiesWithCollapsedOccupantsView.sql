@@ -1,5 +1,8 @@
-﻿IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'PropertiesWithCollapsedOccupantsView')
+﻿IF EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE [NAME] = 'PropertiesWithCollapsedOccupantsView')
 BEGIN
+	DROP VIEW [dbo].[PropertiesWithCollapsedOccupantsView]
+END
+GO
 
 CREATE VIEW [dbo].[PropertiesWithCollapsedOccupantsView]
 AS
@@ -44,5 +47,3 @@ SELECT
 	prop.[IsDeleted]	
 
 FROM dbo.[Property] AS prop
-
-END
