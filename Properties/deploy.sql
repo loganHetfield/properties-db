@@ -149,6 +149,10 @@ PRINT 'Processing file: .\Tables\dbo.Tank.sql...'
 GO
 :r .\Tables\dbo.Tank.sql
 
+PRINT 'Processing file: .\AlterTables\PropertyContactAddColumn.sql...'
+GO
+:r .\AlterTables\PropertyContactAddColumn.sql
+
 PRINT 'Processing file: .\AlterTables\PropertyNoteAddColumns.sql...'
 GO
 :r .\AlterTables\PropertyNoteAddColumns.sql
