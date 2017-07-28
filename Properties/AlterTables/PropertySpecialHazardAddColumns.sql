@@ -4,3 +4,9 @@ ALTER TABLE dbo.PropertySpecialHazard ADD
 	Width int NULL,
 	Height int NULL
 END
+
+if not exists( select 1 from sys.all_columns where object_id = object_id('PropertySpecialHazard') and name = 'FileName')
+BEGIN
+ALTER TABLE dbo.PropertySpecialHazard ADD
+	FileName nvarchar(255) NULL
+END
