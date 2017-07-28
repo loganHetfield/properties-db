@@ -11,13 +11,13 @@ SELECT
 	prop.[AgencyId] as "AgencyId",
 	prop.[Location] as "GeoLocation",
 	prop.[NumberOrMilepost] as "StreetNumber",
-	null as "StreetPrefix", 
+	prop.[StreetSuffix] as "StreetPrefix", 
 	prop.[StreetOrHighway] as "StreetName",
-	null as "StreetType",
-	null as "StreetSuffix",
+	prop.[StreetType] as "StreetType",
+	prop.[StreetSuffix] as "StreetSuffix",
 	prop.[County] as "County",
 	prop.[City] as "City",
-	null as "State",
+	prop.[State] as "State",
 	prop.[Zip] as "PostalCode",
 	prop.StreetPrefixId, 
 	prop.StreetTypeId,
@@ -35,7 +35,7 @@ SELECT
 	) + ']' AS "OccupantNames",
 	'[' + STUFF
 	((
-		SELECT ',["' + REPLACE(REPLACE(occ2.[OccupantName], '\', '\\'), '"', '\"') + '","' + CONVERT(NVARCHAR(MAX), occ2.[OccupantId]) + '"]'
+		SELECT ',{"OccupantId":"' + CONVERT(NVARCHAR(MAX), occ2.[OccupantId]) + '","OccupantName":"' + REPLACE(REPLACE(occ2.[OccupantName], '\', '\\'), '"', '\"') + '"}'
 		FROM dbo.[Occupant] AS occ2
 		WHERE prop.[PropertyId] = occ2.[PropertyId]
 		FOR XML PATH(''), TYPE ).value('.[1]', 'nvarchar(max)'), 
