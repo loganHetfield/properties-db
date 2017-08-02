@@ -149,9 +149,21 @@ PRINT 'Processing file: .\Tables\dbo.OccupantChemicalTank.sql...'
 GO
 :r .\Tables\dbo.OccupantChemicalTank.sql
 
+PRINT 'Processing file: .\AlterTables\BuildingAEDAddColumns.sql...'
+GO
+:r .\AlterTables\BuildingAEDAddColumns.sql
+
 PRINT 'Processing file: .\AlterTables\BuildingColumnChanges.sql...'
 GO
 :r .\AlterTables\BuildingColumnChanges.sql
+
+PRINT 'Processing file: .\AlterTables\PropertContactAlterAddressColumns.sql...'
+GO
+:r .\AlterTables\PropertContactAlterAddressColumns.sql
+
+PRINT 'Processing file: .\AlterTables\PropertyAddColumns.sql...'
+GO
+:r .\AlterTables\PropertyAddColumns.sql
 
 PRINT 'Processing file: .\AlterTables\PropertyAddColumnsForCrawler.sql...'
 GO
@@ -161,9 +173,17 @@ PRINT 'Processing file: .\AlterTables\PropertyContactAddColumn.sql...'
 GO
 :r .\AlterTables\PropertyContactAddColumn.sql
 
+PRINT 'Processing file: .\AlterTables\PropertyHydrantAddColumns.sql...'
+GO
+:r .\AlterTables\PropertyHydrantAddColumns.sql
+
 PRINT 'Processing file: .\AlterTables\PropertyNoteAddColumns.sql...'
 GO
 :r .\AlterTables\PropertyNoteAddColumns.sql
+
+PRINT 'Processing file: .\AlterTables\PropertyOtherWaterSourceAddColumns.sql...'
+GO
+:r .\AlterTables\PropertyOtherWaterSourceAddColumns.sql
 
 PRINT 'Processing file: .\AlterTables\PropertySpecialHazardAddColumns.sql...'
 GO
