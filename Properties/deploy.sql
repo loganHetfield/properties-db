@@ -149,9 +149,53 @@ PRINT 'Processing file: .\Tables\dbo.OccupantChemicalTank.sql...'
 GO
 :r .\Tables\dbo.OccupantChemicalTank.sql
 
+PRINT 'Processing file: .\AlterTables\BuildingAccess.sql...'
+GO
+:r .\AlterTables\BuildingAccess.sql
+
+PRINT 'Processing file: .\AlterTables\BuildingAEDAddColumns.sql...'
+GO
+:r .\AlterTables\BuildingAEDAddColumns.sql
+
+PRINT 'Processing file: .\AlterTables\BuildingAlarmAddColumns.sql...'
+GO
+:r .\AlterTables\BuildingAlarmAddColumns.sql
+
 PRINT 'Processing file: .\AlterTables\BuildingColumnChanges.sql...'
 GO
 :r .\AlterTables\BuildingColumnChanges.sql
+
+PRINT 'Processing file: .\AlterTables\BuildingDetectorAddColumns.sql...'
+GO
+:r .\AlterTables\BuildingDetectorAddColumns.sql
+
+PRINT 'Processing file: .\AlterTables\BuildingExtinguisherSystem.sql...'
+GO
+:r .\AlterTables\BuildingExtinguisherSystem.sql
+
+PRINT 'Processing file: .\AlterTables\BuildingKnoxBox.sql...'
+GO
+:r .\AlterTables\BuildingKnoxBox.sql
+
+PRINT 'Processing file: .\AlterTables\BuildingRiser.sql...'
+GO
+:r .\AlterTables\BuildingRiser.sql
+
+PRINT 'Processing file: .\AlterTables\BuildingShutOff.sql...'
+GO
+:r .\AlterTables\BuildingShutOff.sql
+
+PRINT 'Processing file: .\AlterTables\BuildingSprinkler.sql...'
+GO
+:r .\AlterTables\BuildingSprinkler.sql
+
+PRINT 'Processing file: .\AlterTables\BuildingStandpipe.sql...'
+GO
+:r .\AlterTables\BuildingStandpipe.sql
+
+PRINT 'Processing file: .\AlterTables\PropertyAddColumns.sql...'
+GO
+:r .\AlterTables\PropertyAddColumns.sql
 
 PRINT 'Processing file: .\AlterTables\PropertyAddColumnsForCrawler.sql...'
 GO
@@ -160,6 +204,10 @@ GO
 PRINT 'Processing file: .\AlterTables\PropertyContactAddColumn.sql...'
 GO
 :r .\AlterTables\PropertyContactAddColumn.sql
+
+PRINT 'Processing file: .\AlterTables\PropertyHydrantAddColumns.sql...'
+GO
+:r .\AlterTables\PropertyHydrantAddColumns.sql
 
 PRINT 'Processing file: .\AlterTables\PropertyNoteAddColumns.sql...'
 GO
