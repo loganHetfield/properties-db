@@ -35,5 +35,7 @@ Tables\dbo.PropertyOtherWaterSource.sql
 Tables\dbo.PropertySpecialHazard.sql                                                                                                               
 Tables\dbo.Tank.sql   
 Tables\dbo.OccupantChemicalTank.sql
+Tables\dbo.BuildingNote.sql
+
 AlterTables\*.sql
 Views\*.sql
