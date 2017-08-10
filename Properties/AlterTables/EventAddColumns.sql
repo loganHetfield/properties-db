@@ -6,26 +6,15 @@ END
 
 if exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'DateTime'))
 BEGIN
-ALTER TABLE dbo.Event DROP COLUMN
-	[DateTime]
-END
-
-if not exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'DateTimeUtc'))
-BEGIN
-ALTER TABLE dbo.Event ADD
-	[DateTimeUtc] DateTime
+EXEC sp_rename 'dbo.Event.DateTime', 'DateTimeUtc', 'Column';
 END
 
 if exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'BuldingId'))
 BEGIN
-DELETE dbo.Event
-
-ALTER TABLE dbo.Event DROP COLUMN
-	[BuldingId]
+EXEC sp_rename 'dbo.Event.BuldingId', 'BuildingId', 'Column';
 END
 
-if not exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'BuildingId'))
+if exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'OccuapntId'))
 BEGIN
-ALTER TABLE dbo.Event ADD
-	[BuildingId] DateTime
+EXEC sp_rename 'dbo.Event.OccuapntId', 'OccupantId', 'Column';
 END
