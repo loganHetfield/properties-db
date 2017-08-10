@@ -18,10 +18,14 @@ END
 
 if exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'BuldingId'))
 BEGIN
-EXEC sp_rename 'dbo.Event.BuldingId', 'BuildingId', 'Column';
+DELETE dbo.Event
+
+ALTER TABLE dbo.Event DROP COLUMN
+	[BuldingId]
 END
 
-if exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'OccuapntId'))
+if not exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'BuildingId'))
 BEGIN
-EXEC sp_rename 'dbo.Event.OccuapntId', 'OccupantId', 'Column';
+ALTER TABLE dbo.Event ADD
+	[BuildingId] DateTime
 END
