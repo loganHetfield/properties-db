@@ -1,7 +1,5 @@
 Tables\dbo.Property.sql
 Tables\dbo.Building.sql
-Tables\dbo.BuildingContact.sql
-Tables\dbo.BuildingContactRole.sql
 Tables\dbo.Occupant.sql
 Tables\dbo.Attachment.sql
 Tables\dbo.BuildingAccess.sql
