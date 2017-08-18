@@ -31,3 +31,10 @@ BEGIN
 ALTER TABLE dbo.[Attachment] ADD
     [IsDeleted] BIT NOT NULL DEFAULT 0
 END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Attachment') and (name = 'PrimaryFilePath'))
+BEGIN
+ALTER TABLE dbo.[Attachment] ADD
+    [PrimaryFilePath] [nvarchar](1024) NOT NULL DEFAULT '',
+    [SecondaryFilePath] [nvarchar](1024) NULL
+END
