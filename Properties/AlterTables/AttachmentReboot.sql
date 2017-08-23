@@ -40,15 +40,18 @@ ALTER TABLE dbo.[Attachment] ADD
 END
 
 if not exists (select 1 from sys.all_columns where object_id = object_id('Attachment') and (name = 'CreatedByLogin'))
-BEGIN TRANSACTION
-
+BEGIN
 ALTER TABLE dbo.[Attachment] ADD
     [CreatedByLogin] [nvarchar](256) NOT NULL
 	CONSTRAINT temp_login_defaut DEFAULT '',
     [CreatedByFullName] [nvarchar](256) NOT NULL
 	CONSTRAINT temp_fullname_defaut DEFAULT ''
+END
 
 GO
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Attachment') and (name = 'CreatedByLogin') and (name = 'CreatedBy'))
+BEGIN
 
 UPDATE 
 	attnew
@@ -65,4 +68,5 @@ ALTER TABLE dbo.[Attachment] DROP CONSTRAINT temp_fullname_defaut
 ALTER TABLE dbo.[Attachment] DROP COLUMN
 	[CreatedBy]
 
-COMMIT TRANSACTION
+END
+
