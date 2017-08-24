@@ -39,5 +39,9 @@ Tables\dbo.Tank.sql
 Tables\dbo.OccupantChemicalTank.sql
 Tables\dbo.BuildingNote.sql
 
+RequireOrder\Attachment_0_Reboot.sql
+RequireOrder\Attachment_1_AddCreateByLogin.sql
+RequireOrder\Attachment_2_CopyCreateBy.sql
+
 AlterTables\*.sql
 Views\*.sql
