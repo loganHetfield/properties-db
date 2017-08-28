@@ -58,6 +58,12 @@ ALTER TABLE dbo.Building Add
 	EighthAlarm nvarchar(255) NULL
 END
 
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'EndDate' and TYPE_NAME(system_type_id) = 'date') 
+AND exists (select * from sys.objects where name = 'FK_Building_Property')
+BEGIN
+ALTER TABLE dbo.Building
+	DROP CONSTRAINT DF_Building_IsDeleted
+END
 
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'EndDate' and TYPE_NAME(system_type_id) = 'date')
 BEGIN
@@ -69,13 +75,7 @@ SET ANSI_NULLS ON
 SET ANSI_PADDING ON
 SET ANSI_WARNINGS ON
 
-ALTER TABLE dbo.Building
-	DROP CONSTRAINT FK_Building_Property
-
 ALTER TABLE dbo.Property SET (LOCK_ESCALATION = TABLE)
-
-ALTER TABLE dbo.Building
-	DROP CONSTRAINT DF_Building_IsDeleted
 
 CREATE TABLE dbo.Tmp_Building
 	(
@@ -197,6 +197,12 @@ ALTER TABLE dbo.BuildingSprinkler
 	DROP CONSTRAINT FK_BuildingSprinkler_Building
 ALTER TABLE dbo.BuildingStandpipe
 	DROP CONSTRAINT FK_BuildingStandpipe_Building
+ALTER TABLE dbo.Building
+	DROP CONSTRAINT FK_Building_Property
+ALTER TABLE dbo.BuildingContact
+	DROP CONSTRAINT FK_BuildingContact_Building
+DROP INDEX IX_Unique_Building_NameOrNumber ON dbo.Building
+		
 DROP TABLE dbo.Building
 EXECUTE sp_rename N'dbo.Tmp_Building', N'Building', 'OBJECT' 
 ALTER TABLE dbo.Building ADD CONSTRAINT
@@ -346,4 +352,5 @@ ALTER TABLE dbo.BuildingNote ADD CONSTRAINT
 	 ON DELETE  NO ACTION 
 	
 ALTER TABLE dbo.BuildingNote SET (LOCK_ESCALATION = TABLE)
+
 END
