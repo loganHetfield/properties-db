@@ -354,3 +354,11 @@ ALTER TABLE dbo.BuildingNote ADD CONSTRAINT
 ALTER TABLE dbo.BuildingNote SET (LOCK_ESCALATION = TABLE)
 
 END
+
+if NOT exists( select 1 from sys.all_columns where object_id = object_id('Building') and name = '[BuildingNameNumber]' )
+BEGIN
+ALTER TABLE dbo.Building Add 
+	[BuildingNameNumber] [nvarchar](255) NULL,
+	[SuiteNameNumber] [nvarchar](255) NULL,
+	[HasRestrainedOccupants] [bit] NULL
+END
