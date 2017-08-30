@@ -1,9 +1,9 @@
-if  exists( select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'FirstName' or name = 'LastName'))
+if  exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'FirstName' or name = 'LastName'))
 BEGIN
 ALTER TABLE dbo.PropertyContact DROP COLUMN FirstName, LastName, BusinessName
 END
 
-if not exists( select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ImageId' or name = 'ThumbImageId'))
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ImageId' or name = 'ThumbImageId'))
 BEGIN
 ALTER TABLE dbo.PropertyContact ADD
 	[Name] nvarchar(100) NULL,
@@ -12,4 +12,15 @@ ALTER TABLE dbo.PropertyContact ADD
 	[FileName] [varchar](255) NULL,
 	[Width] [int] NULL,
 	[Height] [int] NULL
+END 
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'FaxNumber'))
+BEGIN
+ALTER TABLE dbo.PropertyContact ADD
+	[FaxNumber] [nvarchar](255) NULL,
+	[WebSite] [nvarchar](255) NULL,
+	[ProfessionalTitleId] [int] NULL,
+	[ContactSuffix] [int] NULL,
+	[BusinessName] [nvarchar](255) NULL,
+	[IsNameSameAsProperty] [bit] NULL
 END 
