@@ -355,9 +355,9 @@ ALTER TABLE dbo.BuildingNote SET (LOCK_ESCALATION = TABLE)
 
 END
 
-if NOT exists( select 1 from sys.all_columns where object_id = object_id('Building') and name = '[BuildingNameNumber]' )
+if NOT EXISTS (select 1 from sys.all_columns where object_id = object_id('Occupant') and name = 'BuildingNameNumber')
 BEGIN
-ALTER TABLE dbo.Building Add 
+ALTER TABLE [dbo].[Occupant] Add 
 	[BuildingNameNumber] [nvarchar](255) NULL,
 	[SuiteNameNumber] [nvarchar](255) NULL,
 	[HasRestrainedOccupants] [bit] NULL
