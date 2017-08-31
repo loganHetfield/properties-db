@@ -20,7 +20,21 @@ ALTER TABLE dbo.PropertyContact ADD
 	[FaxNumber] [nvarchar](255) NULL,
 	[WebSite] [nvarchar](255) NULL,
 	[ProfessionalTitleId] [int] NULL,
-	[ContactSuffix] [int] NULL,
+	[ContactSuffix] [nvarchar](255) NULL,
 	[BusinessName] [nvarchar](255) NULL,
 	[IsNameSameAsProperty] [bit] NULL
+END 
+
+if exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ContactSuffix'))
+BEGIN
+ALTER TABLE dbo.PropertyContact DROP COLUMN
+	[ContactSuffixId]
+END 
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ProfessionalTitle'))
+BEGIN
+ALTER TABLE dbo.PropertyContact ADD
+	[ProfessionalTitle] [nvarchar](255) NULL,
+	[ContactSuffixId] [int] NULL,
+	[ContactSuffix] [nvarchar](255) NULL
 END 

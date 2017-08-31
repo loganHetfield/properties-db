@@ -13,9 +13,5 @@ ALTER TABLE dbo.Property ADD
 	[CommorOrPreviousNames] [nvarchar](255) NULL,
 	[PropertyIdentity] [nvarchar](255) NULL,
 	[IsConstructionInProgress] [bit] NULL,
-	[ArePlansInReview] [bit] NULL,
-	[Description] [bit] NULL,
-	[PriorityId] [int] NULL,
-	[Category] [int] NULL,
-	[Source] [int] NULL
+	[ArePlansInReview] [bit] NULL
 END
