@@ -28,7 +28,7 @@ END
 if exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ContactSuffix'))
 BEGIN
 ALTER TABLE dbo.PropertyContact DROP COLUMN
-	[ContactSuffixId]
+	[ContactSuffix]
 END 
 
 if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ProfessionalTitle'))
