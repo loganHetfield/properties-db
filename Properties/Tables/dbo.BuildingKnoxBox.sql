@@ -8,8 +8,8 @@ CREATE TABLE [dbo].[BuildingKnoxBox] (
 	    [ImageId]          UNIQUEIDENTIFIER      NULL,
       [ThumbImageId]     UNIQUEIDENTIFIER      NULL,
       [FileName]         VARCHAR (255)         NULL,	    
-	    [ImageHeight]      INT                   NULL,
-	    [ImageWidth]       INT                   NULL
+	    [Height]      INT                   NULL,
+	    [Width]       INT                   NULL
     CONSTRAINT [PK_BuildingKnoxBox] PRIMARY KEY CLUSTERED ([BuildingKnoxBoxId] ASC),
     CONSTRAINT [FK_BuildingKnoxBox_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );

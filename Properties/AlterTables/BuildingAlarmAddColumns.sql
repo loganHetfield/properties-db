@@ -1,7 +1,7 @@
-if not exists( select 1 from sys.all_columns where object_id = object_id('BuildingAlarm') and (name = 'Width' or name = 'Height'))
+if not exists( select 1 from sys.all_columns where object_id = object_id('BuildingAlarm') and name in ('ImageId', 'ThumbImageId', 'FileName', 'Width', 'Height'))
 BEGIN
 ALTER TABLE dbo.BuildingAlarm ADD
-	  [ImageId]        UNIQUEIDENTIFIER NULL,
+    [ImageId]        UNIQUEIDENTIFIER NULL,
     [ThumbImageId]   UNIQUEIDENTIFIER NULL,
     [FileName]       VARCHAR (255)    NULL,
     [Width]          INT              NULL,
@@ -17,7 +17,6 @@ END
 
 if exists( select 1 from sys.all_columns where object_id = object_id('BuildingAlarm') and (name = 'Height' or name = 'Width'))
 BEGIN
-	ALTER TABLE dbo.BuildingAlarm Drop Column [Height]
-	ALTER TABLE dbo.BuildingAlarm Drop Column [Width]
+    ALTER TABLE dbo.BuildingAlarm Drop Column [Height]
+    ALTER TABLE dbo.BuildingAlarm Drop Column [Width]
 END
-
