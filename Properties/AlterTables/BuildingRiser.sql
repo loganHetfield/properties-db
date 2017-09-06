@@ -7,3 +7,16 @@ ALTER TABLE dbo.BuildingRiser ADD
     [Width]          INT              NULL,
     [Height]         INT              NULL
 END
+
+if not exists( select 1 from sys.all_columns where object_id = object_id('BuildingRiser') and (name = 'ImageHeight' or name = 'ImageWidth'))
+BEGIN
+ALTER TABLE dbo.BuildingRiser ADD
+    [ImageHeight]         INT              NULL,
+    [ImageWidth]          INT              NULL
+END
+
+if exists( select 1 from sys.all_columns where object_id = object_id('BuildingRiser') and (name = 'Height' or name = 'Width'))
+BEGIN
+	ALTER TABLE dbo.BuildingRiser Drop Column [Height]
+	ALTER TABLE dbo.BuildingRiser Drop Column [Width]
+END
