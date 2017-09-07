@@ -5,6 +5,14 @@ ALTER TABLE dbo.PropertySpecialHazard ADD
 	Height int NULL
 END
 
+if exists( select 1 from sys.all_columns where object_id = object_id('PropertySpecialHazard') and (name = 'Width' or name = 'Height'))
+BEGIN
+
+EXEC sp_rename '[dbo].[PropertySpecialHazard].[Height]', 'ImageHeight', 'Column';
+EXEC sp_rename '[dbo].[PropertySpecialHazard].[Width]', 'ImageWidth', 'Column';
+
+END
+
 if not exists( select 1 from sys.all_columns where object_id = object_id('PropertySpecialHazard') and name = 'FileName')
 BEGIN
 ALTER TABLE dbo.PropertySpecialHazard ADD
