@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[Attachment](
 	[PrimaryFilePath] [nvarchar](1024) NOT NULL DEFAULT (''),
 	[SecondaryFilePath] [nvarchar](1024) NULL,
 	[CreatedByLogin] [nvarchar](256) NOT NULL,
-	[CreatedByFullName] [nvarchar](256) NOT NULL,
+	[CreatedByFullName] [nvarchar](256) NOT NULL
  CONSTRAINT [PK_Attachment] PRIMARY KEY CLUSTERED 
 (
 	[AttachmentId] ASC
