@@ -103,7 +103,6 @@ ALTER TABLE dbo.PropertyHydrant ADD
 	[PortSize3] [int] NULL,
 	[PortSize4] [int] NULL,
 	[HydrantOwner] [nvarchar](255) NULL,
-	[NumberOfMilepost] [nvarchar](50) NULL,
 	[TotalFlowNeeded] [int] NULL,
 	[AvailableFlow] [int] NULL,
 	[FlowAvailable] [int] NULL,
@@ -134,4 +133,45 @@ ALTER TABLE dbo.PropertyHydrant ADD
 	[State] [nvarchar](255) NULL,
 	[Zip] [nvarchar](50) NULL,
 	[County] [nvarchar](255) NULL
+END
+
+if exists( select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'OnwerNumberOrMilepost'))
+BEGIN
+	EXECUTE sp_rename '[dbo].[PropertyHydrant].[OnwerNumberOrMilepost]', 'OwnerNumberOrMilepost', 'COLUMN' 
+END
+
+if exists( select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'Order'))
+BEGIN
+	ALTER TABLE [dbo].[PropertyHydrant] ALTER COLUMN [Order] [nvarchar](50);  
+END
+
+if not exists( select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'TestHydrantTypeId'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant ADD
+    [OwnerRoomNumber] VARCHAR (255) NULL,
+    [TestHydrantTypeId] [int] NULL
+END
+
+if exists( select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'NumberOfMilepost'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant DROP COLUMN
+	[NumberOfMilepost]
+END
+
+if exists( select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'NumberOrMilepost'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant DROP COLUMN
+	[NumberOrMilepost],
+	[StreetPrefixId],
+	[StreetPrefix],
+	[StreetOrHighway],
+	[StreetTypeId],
+	[StreetType],
+	[StreetSuffixId],
+	[StreetSuffix],
+	[City],
+	[StateId],
+	[State],
+	[Zip],
+	[County]
 END
