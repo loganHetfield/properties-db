@@ -28,7 +28,8 @@ Tables\dbo.OccupantKnoxBox.sql
 Tables\dbo.OccupantRiser.sql       
 Tables\dbo.OccupantShutOff.sql     
 Tables\dbo.OccupantSprinkler.sql   
-Tables\dbo.OccupantStandpipe.sql   
+Tables\dbo.OccupantStandpipe.sql  
+Tables\dbo.OccupantNote.sql
 Tables\dbo.PropertyContact.sql     
 Tables\dbo.PropertyContactRole.sql 
 Tables\dbo.PropertyHydrant.sql     
