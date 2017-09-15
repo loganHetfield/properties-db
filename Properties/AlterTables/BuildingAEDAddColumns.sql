@@ -20,3 +20,9 @@ BEGIN
     ALTER TABLE dbo.BuildingAED Drop Column [Height]
     ALTER TABLE dbo.BuildingAED Drop Column [Width]
 END
+
+if Not exists( select 1 from sys.all_columns where object_id = object_id('BuildingAED') and name = 'Location')
+BEGIN
+    ALTER TABLE dbo.BuildingAED ADD 
+	[Location] nvarchar(255) NULL
+END
