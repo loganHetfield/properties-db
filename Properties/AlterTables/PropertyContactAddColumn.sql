@@ -1,6 +1,6 @@
 if  exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'FirstName' or name = 'LastName'))
 BEGIN
-ALTER TABLE dbo.PropertyContact DROP COLUMN FirstName, LastName, BusinessName
+ALTER TABLE dbo.PropertyContact DROP COLUMN FirstName, LastName
 END
 
 if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ImageId' or name = 'ThumbImageId'))
@@ -14,27 +14,19 @@ ALTER TABLE dbo.PropertyContact ADD
 	[Height] [int] NULL
 END 
 
+if exists( select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'Width' or name = 'Height'))
+BEGIN
+
+EXEC sp_rename '[dbo].[PropertyContact].[Height]', 'ImageHeight', 'Column';
+EXEC sp_rename '[dbo].[PropertyContact].[Width]', 'ImageWidth', 'Column';
+
+END
+
 if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'FaxNumber'))
 BEGIN
 ALTER TABLE dbo.PropertyContact ADD
 	[FaxNumber] [nvarchar](255) NULL,
 	[WebSite] [nvarchar](255) NULL,
-	[ProfessionalTitleId] [int] NULL,
-	[ContactSuffix] [nvarchar](255) NULL,
 	[BusinessName] [nvarchar](255) NULL,
 	[IsNameSameAsProperty] [bit] NULL
-END 
-
-if exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ContactSuffix'))
-BEGIN
-ALTER TABLE dbo.PropertyContact DROP COLUMN
-	[ContactSuffix]
-END 
-
-if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ProfessionalTitle'))
-BEGIN
-ALTER TABLE dbo.PropertyContact ADD
-	[ProfessionalTitle] [nvarchar](255) NULL,
-	[ContactSuffixId] [int] NULL,
-	[ContactSuffix] [nvarchar](255) NULL
 END 

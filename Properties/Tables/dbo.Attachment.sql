@@ -4,6 +4,7 @@ BEGIN
 CREATE TABLE [dbo].[Attachment](
 	[AttachmentId] [uniqueidentifier] NOT NULL,
 	[AttachmentType] [nvarchar](50) NOT NULL,
+    [AttachmentTagId] [INT] NULL,
 	[PropertyId] [uniqueidentifier] NULL,
 	[BuildingId] [uniqueidentifier] NULL,
 	[OccupantId] [uniqueidentifier] NULL,
@@ -18,7 +19,7 @@ CREATE TABLE [dbo].[Attachment](
 	[PrimaryFilePath] [nvarchar](1024) NOT NULL DEFAULT (''),
 	[SecondaryFilePath] [nvarchar](1024) NULL,
 	[CreatedByLogin] [nvarchar](256) NOT NULL,
-	[CreatedByFullName] [nvarchar](256) NOT NULL,
+	[CreatedByFullName] [nvarchar](256) NOT NULL
  CONSTRAINT [PK_Attachment] PRIMARY KEY CLUSTERED 
 (
 	[AttachmentId] ASC

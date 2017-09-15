@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[BuildingContact] (
 			[Name]                     [NVARCHAR](100)    NULL,
 			[ImageId]                  [UNIQUEIDENTIFIER] NULL,
 			[ThumbImageId]             [UNIQUEIDENTIFIER] NULL,
-			[FileName]                 [VARCHAR](255)     NULL,
+			[FileName]                 [NVARCHAR](255)     NULL,
 			[ImageWidth]               [INT]              NULL,
 			[ImageHeight]              [INT]              NULL,
     CONSTRAINT [PK_BuildingContact] PRIMARY KEY CLUSTERED ([BuildingContactId] ASC),

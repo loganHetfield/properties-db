@@ -12,6 +12,11 @@ CREATE TABLE [dbo].[BuildingStandpipe] (
     [StandpipeZone]        NVARCHAR (50)    NULL,
     [CertificationNumber]  NVARCHAR (50)    NULL,
     [CertificationDate]    DATE             NULL,
+    [ImageId]              UNIQUEIDENTIFIER NULL,
+    [ThumbImageId]         UNIQUEIDENTIFIER NULL,
+    [FileName]			  NVARCHAR (255)    NULL,
+    [ImageHeight]         INT              NULL,
+    [ImageWidth]          INT              NULL
     CONSTRAINT [PK_BuildingStandpipe] PRIMARY KEY CLUSTERED ([BuildingStandpipeId] ASC),
     CONSTRAINT [FK_BuildingStandpipe_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );

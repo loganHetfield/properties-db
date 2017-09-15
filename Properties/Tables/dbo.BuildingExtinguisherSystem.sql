@@ -12,6 +12,11 @@ CREATE TABLE [dbo].[BuildingExtinguisherSystem] (
     [ExtinguisherInspectionDate]    DATE             NULL,
     [TestType]                      INT              NULL,
     [TestDate]                      DATE             NULL,
+    [ImageId]        UNIQUEIDENTIFIER NULL,
+    [ThumbImageId]   UNIQUEIDENTIFIER NULL,
+    [FileName]       NVARCHAR (255)    NULL,
+    [ImageHeight]         INT              NULL,
+    [ImageWidth]          INT              NULL
     CONSTRAINT [PK_BuildingExtinguisherSystem] PRIMARY KEY CLUSTERED ([BuildingExtinguisherSystemsId] ASC),
     CONSTRAINT [FK_BuildingExtinguisherSystem_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );

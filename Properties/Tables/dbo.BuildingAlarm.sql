@@ -10,6 +10,11 @@ CREATE TABLE [dbo].[BuildingAlarm] (
     [AreaProtected]       NVARCHAR (50)    NULL,
     [AlarmCertification]  NVARCHAR (50)    NULL,
     [CertificationDate]   DATE             NULL,
+    [ImageId]			UNIQUEIDENTIFIER NULL,
+    [ThumbImageId]		UNIQUEIDENTIFIER NULL,
+    [FileName]			NVARCHAR (255)    NULL,
+    [ImageHeight]         INT              NULL,
+    [ImageWidth]          INT              NULL
     CONSTRAINT [PK_BuildingAlarm] PRIMARY KEY CLUSTERED ([BuildingAlarmId] ASC),
     CONSTRAINT [FK_BuildingAlarm_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );
