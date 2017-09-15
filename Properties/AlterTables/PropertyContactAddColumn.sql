@@ -1,6 +1,6 @@
 if  exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'FirstName' or name = 'LastName'))
 BEGIN
-ALTER TABLE dbo.PropertyContact DROP COLUMN FirstName, LastName, BusinessName
+ALTER TABLE dbo.PropertyContact DROP COLUMN FirstName, LastName
 END
 
 if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'ImageId' or name = 'ThumbImageId'))

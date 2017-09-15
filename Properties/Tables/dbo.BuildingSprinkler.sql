@@ -19,6 +19,11 @@ CREATE TABLE [dbo].[BuildingSprinkler] (
     [FlowRateInspector]        UNIQUEIDENTIFIER NULL,
     [MainSize]                 DECIMAL (18, 2)  NULL,
     [MainLocation]             NVARCHAR (50)    NULL,
+    [ImageId]				UNIQUEIDENTIFIER NULL,
+    [ThumbImageId]			UNIQUEIDENTIFIER NULL,
+    [FileName]				NVARCHAR (255)    NULL,
+    [ImageHeight]         INT              NULL,
+    [ImageWidth]          INT              NULL
     CONSTRAINT [PK_BuildingSprinkler] PRIMARY KEY CLUSTERED ([BuildingSprinklerId] ASC),
     CONSTRAINT [FK_BuildingSprinkler_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );

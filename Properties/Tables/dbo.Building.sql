@@ -4,7 +4,7 @@ BEGIN
 CREATE TABLE [dbo].[Building] (
     [BuildingId]                         UNIQUEIDENTIFIER   NOT NULL,
     [PropertyId]                         UNIQUEIDENTIFIER   NOT NULL,
-    [Name]                               NVARCHAR (50)      NULL,
+    [NameOrNumber]                       NVARCHAR (50)      NULL,
     [Status]                             INT                NULL,
     [StartDate]                          DATETIME           NOT NULL,
     [EndDate]                            DATE               NULL,
@@ -91,7 +91,7 @@ CREATE TABLE [dbo].[Building] (
 );
 
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Unique_Building_Name]
-    ON [dbo].[Building]([PropertyId] ASC, [Name] ASC);
+    ON [dbo].[Building]([PropertyId] ASC, [NameOrNumber] ASC);
 
 END
 

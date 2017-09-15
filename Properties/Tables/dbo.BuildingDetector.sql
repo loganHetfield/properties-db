@@ -11,6 +11,11 @@ CREATE TABLE [dbo].[BuildingDetector] (
     [Model]              NVARCHAR (50)    NULL,
     [SerialNumber]       NVARCHAR (100)   NULL,
     [Manufacturer]       NVARCHAR (50)    NULL,
+    [ImageId]        UNIQUEIDENTIFIER NULL,
+    [ThumbImageId]   UNIQUEIDENTIFIER NULL,
+    [FileName]       NVARCHAR (255)    NULL,
+    [ImageHeight]         INT              NULL,
+    [ImageWidth]          INT              NULL
     CONSTRAINT [PK_BuildingDetector] PRIMARY KEY CLUSTERED ([BuildingDetectorId] ASC),
     CONSTRAINT [FK_BuildingDetector_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );

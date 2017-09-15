@@ -11,6 +11,11 @@ CREATE TABLE [dbo].[BuildingRiser] (
     [Drain]                NVARCHAR (50)    NULL,
     [DrainLocation]        NVARCHAR (50)    NULL,
     [CertificationDate]    DATE             NULL,
+    [ImageId]        UNIQUEIDENTIFIER NULL,
+    [ThumbImageId]   UNIQUEIDENTIFIER NULL,
+    [FileName]       NVARCHAR (255)    NULL,
+    [ImageHeight]         INT              NULL,
+    [ImageWidth]          INT              NULL
     CONSTRAINT [PK_BuildingRiser] PRIMARY KEY CLUSTERED ([BuildingRiserId] ASC),
     CONSTRAINT [FK_BuildingRiser_Building] FOREIGN KEY ([BuildingId]) REFERENCES [dbo].[Building] ([BuildingId])
 );

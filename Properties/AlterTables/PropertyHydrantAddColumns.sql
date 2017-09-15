@@ -119,21 +119,3 @@ ALTER TABLE dbo.PropertyHydrant ADD
 	[OwnerZip] [nvarchar](50) NULL,
 	[OwnerCounty] [nvarchar](255) NULL
 END
-
-if exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'NumberOrMilepost'))
-BEGIN
-ALTER TABLE dbo.PropertyHydrant DROP COLUMN
-	[NumberOrMilepost],
-	[StreetPrefixId],
-	[StreetPrefix],
-	[StreetOrHighway],
-	[StreetTypeId],
-	[StreetType],
-	[StreetSuffixId],
-	[StreetSuffix],
-	[City],
-	[StateId],
-	[State],
-	[Zip],
-	[County]
-END

@@ -4,6 +4,7 @@ BEGIN
 CREATE TABLE [dbo].[Attachment](
 	[AttachmentId] [uniqueidentifier] NOT NULL,
 	[AttachmentType] [nvarchar](50) NOT NULL,
+    [AttachmentTagId] [INT] NULL,
 	[PropertyId] [uniqueidentifier] NULL,
 	[BuildingId] [uniqueidentifier] NULL,
 	[OccupantId] [uniqueidentifier] NULL,
