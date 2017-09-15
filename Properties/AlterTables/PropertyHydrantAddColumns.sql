@@ -78,7 +78,6 @@ if not exists (select 1 from sys.all_columns where object_id = object_id('Proper
 BEGIN
 ALTER TABLE dbo.PropertyHydrant ADD
     [HydrantTypeId] [int] NULL,
-	[IsLocateAtIntersection] [bit] NULL,
 	[HydrantDistrictId] [int] NULL,
 	[HydrantSectorId] [int] NULL,
 	[Distance] [int] NULL,
@@ -95,7 +94,7 @@ ALTER TABLE dbo.PropertyHydrant ADD
 	[IsOutOfService] [bit] NULL,
 	[IsRepairRequired] [bit] NULL,
 	[LastFlowTest] [date] NULL,
-	[HydrantOrder] [int] NULL,
+	[HydrantOrder] [nvarchar](50) NULL,
 	[WaterMainId] [nvarchar](255) NULL,
 	[MainDiameter] [int] NULL,
 	[WaterMainTypeId] [int] NULL,
@@ -121,52 +120,6 @@ ALTER TABLE dbo.PropertyHydrant ADD
 	[OwnerCounty] [nvarchar](255) NULL
 END
 
-if exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'OnwerNumberOrMilepost'))
-BEGIN
-	EXECUTE sp_rename '[dbo].[PropertyHydrant].[OnwerNumberOrMilepost]', 'OwnerNumberOrMilepost', 'COLUMN' 
-END
-
-if exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'HydrantColor'))
-BEGIN
-	EXECUTE sp_rename '[dbo].[PropertyHydrant].[HydrantColor]', 'HydrantColorId', 'COLUMN' 
-END
-
-if exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'Order'))
-BEGIN
-	EXECUTE sp_rename '[dbo].[PropertyHydrant].[Order]', 'HydrantOrder', 'COLUMN' 
-END
-
-if exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'Order'))
-BEGIN
-	ALTER TABLE [dbo].[PropertyHydrant] ALTER COLUMN [Order] [nvarchar](50);  
-END
-
-if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'OwnerRoomNumber'))
-BEGIN
-ALTER TABLE dbo.PropertyHydrant ADD
-    [OwnerRoomNumber] NVARCHAR (255) NULL
-END
-
-if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'WaterMainTypeId'))
-BEGIN
-ALTER TABLE dbo.PropertyHydrant ADD
-    [WaterMainTypeId] [int] NULL
-END	
-
-if exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'NumberOfMilepost'))
-BEGIN
-ALTER TABLE dbo.PropertyHydrant DROP COLUMN
-	[NumberOfMilepost]
-END
-
-if exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'TotalFlowNeeded'))
-BEGIN
-ALTER TABLE dbo.PropertyHydrant DROP COLUMN
-	[TotalFlowNeeded],
-	[AvailableFlow],
-	[FlowAvailable]
-END
-
 if exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'NumberOrMilepost'))
 BEGIN
 ALTER TABLE dbo.PropertyHydrant DROP COLUMN
@@ -183,10 +136,4 @@ ALTER TABLE dbo.PropertyHydrant DROP COLUMN
 	[State],
 	[Zip],
 	[County]
-END
-
-if exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'HydrantStyleIn'))
-BEGIN
-	EXECUTE sp_rename '[dbo].[PropertyHydrant].[HydrantStyleIn]', 'HydrantStyleId', 'COLUMN' 
-	EXECUTE sp_rename '[dbo].[PropertyHydrant].[HydrantClassIn]', 'HydrantClassId', 'COLUMN' 
 END

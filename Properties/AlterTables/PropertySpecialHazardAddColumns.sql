@@ -25,11 +25,7 @@ ALTER TABLE dbo.PropertySpecialHazard ADD
 	[Description] [nvarchar](255) NULL,
 	[Location] [nvarchar](255) NULL,
 	[PriorityId] [int] NULL,
-	[Priority] [nvarchar](255) NULL,
 	[CategoryId] [int] NULL,
-	[Category] [nvarchar](255) NULL,
-	[SourceId] [int] NULL,
-	[Source] [nvarchar](255) NULL,
 	[StartDate] [DateTime] NULL,
 	[EndDate] [DateTime] NULL
 END
