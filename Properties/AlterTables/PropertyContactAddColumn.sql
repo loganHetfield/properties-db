@@ -30,3 +30,9 @@ ALTER TABLE dbo.PropertyContact ADD
 	[BusinessName] [nvarchar](255) NULL,
 	[IsNameSameAsProperty] [bit] NULL
 END 
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'RoomNumber'))
+BEGIN
+ALTER TABLE dbo.PropertyContact ADD
+	[RoomNumber] nvarchar(255) NULL
+END 

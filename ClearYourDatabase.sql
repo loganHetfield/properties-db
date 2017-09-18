@@ -1,6 +1,3 @@
-USE [PropertiesAndInspectionsV1]
-GO
-
 -- Attachement
 
 delete [Attachment]
@@ -34,10 +31,13 @@ delete [OccupantRiser]
 delete [OccupantShutOff]
 delete [OccupantSprinkler]
 delete [OccupantStandpipe]
+delete [OccupantStandpipe]
 delete [Occupant]
 
 -- Building Document
 
+delete [BuildingContactRole]
+delete [BuildingContact]
 delete [BuildingAccess]
 delete [BuildingAED]
 delete [BuildingAlarm]

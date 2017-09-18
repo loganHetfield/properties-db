@@ -119,3 +119,51 @@ ALTER TABLE dbo.PropertyHydrant ADD
 	[OwnerZip] [nvarchar](50) NULL,
 	[OwnerCounty] [nvarchar](255) NULL
 END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'HydrantModel'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant ADD
+	[HydrantModel] nvarchar(255) NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'HydrantStyleId'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant ADD
+	[HydrantStyleId] [int] NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'HydrantClassId'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant ADD
+	[HydrantClassId] [int] NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'HydrantColorId'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant ADD
+	[HydrantColorId] [int] NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'HydrantOrder'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant ADD
+	[HydrantOrder] [nvarchar](50) NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'WaterMainTypeId'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant ADD
+	[WaterMainTypeId] [int] NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'OwnerNumberOrMilepost'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant ADD
+	[OwnerNumberOrMilepost] [nvarchar](50) NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyHydrant') and (name = 'OwnerRoomNumber'))
+BEGIN
+ALTER TABLE dbo.PropertyHydrant ADD
+	[OwnerRoomNumber] [nvarchar](255) NULL
+END
