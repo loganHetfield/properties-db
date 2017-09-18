@@ -13,8 +13,8 @@ drop table [Image]
 
 -- Chemical & Tank
 
---drop table [Tank]
---drop table [Chemical]
+drop table [Tank]
+drop table [Chemical]
 
 -- Occupant Document
 
