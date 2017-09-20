@@ -1,4 +1,13 @@
--- Name
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Status')
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[Status]', 'StatusId', 'Column'
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TotalValue')
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	[TotalValue] INT NULL
+END
 
 if exists (SELECT * 
 FROM sys.indexes 

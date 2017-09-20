@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[Building] (
     [BuildingId]                         UNIQUEIDENTIFIER   NOT NULL,
     [PropertyId]                         UNIQUEIDENTIFIER   NOT NULL,
     [NameOrNumber]                       NVARCHAR (50)      NULL,
-    [Status]                             INT                NULL,
+    [StatusId]                           INT                NULL,
     [StartDate]                          DATETIME           NOT NULL,
     [EndDate]                            DATE               NULL,
     [Length]                             INT                NULL,
@@ -81,11 +81,12 @@ CREATE TABLE [dbo].[Building] (
     [SearchAt100Percent]                 NVARCHAR (255)     NULL,
     [Notes]                              NVARCHAR (255)     NULL,
     [RowVersion]                         ROWVERSION         NOT NULL,
+	[TotalValue]                         INT                NULL,
     [IsDeleted]                          BIT                CONSTRAINT [DF_Building_IsDeleted] DEFAULT ((0)) NOT NULL,
     [CreatedBy]                          NVARCHAR (50)      NOT NULL,
     [CreatedDate]                        DATETIMEOFFSET (7) NOT NULL,
     [UpdatedBy]                          NVARCHAR (50)      NOT NULL,
-    [UpdatedDate]                        DATETIMEOFFSET (7) NOT NULL,
+    [UpdatedDate]                        DATETIMEOFFSET (7) NOT NULL
     CONSTRAINT [PK_Building] PRIMARY KEY CLUSTERED ([BuildingId] ASC),
     CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
