@@ -9,6 +9,98 @@ ALTER TABLE [dbo].[Building] Add
 	[TotalValue] INT NULL
 END
 
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ConstructionType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[ConstructionType]', 'ConstructionTypeId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'IsoConstructionCode' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[IsoConstructionCode]', 'IsoConstructionCodeId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'RoofType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[RoofType]', 'RoofTypeId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireWalls' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[FireWalls]', 'FireWallsId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ExteriorWallsType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[ExteriorWallsType]', 'ExteriorWallsId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ExteriorDoorsType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[ExteriorDoorsType]', 'ExteriorDoorsId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'InteriorWallsType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[InteriorWallsType]', 'InteriorWallsId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'InteriorDoorsType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[InteriorDoorsType]', 'InteriorDoorsId', 'Column' 
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'RoofMaterialId' )
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	[RoofMaterialId] INT NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireWallsLocation' )
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	[FireWallsLocation] NVARCHAR (255) NULL
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireDoorsType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[FireDoorsType]', 'FireDoorsId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireLoad' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[FireLoad]', 'FireLoadId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Stock' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[Stock]', 'StockId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'BasementUse' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[BasementUse]', 'BasementUseId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'AtticUse' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[AtticUse]', 'AtticUseId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'MainFloorConstructionType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[MainFloorConstructionType]', 'MainFloorConstructionId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'UpperFloorConstructionType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[UpperFloorConstructionType]', 'UpperFloorConstructionId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'BelowGradeConstructionType' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[BelowGradeConstructionType]', 'BelowGradeConstructionId', 'Column' 
+END
+
 if exists (SELECT * 
 FROM sys.indexes 
 WHERE name='IX_Unique_Building_Name' AND object_id = OBJECT_ID('dbo.Building'))
@@ -16,16 +108,16 @@ BEGIN
 	DROP Index IX_Unique_Building_Name on Building
 END
 
-if exists( select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Name' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Name' )
 BEGIN
 ALTER TABLE dbo.Building Drop Column 
 	Name
 END
 
-if NOT exists( select 1 from sys.all_columns where object_id = object_id('Building') and name = 'NameOrNumber' )
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'NameOrNumber' )
 BEGIN
 ALTER TABLE dbo.Building Add 
-	NameOrNumber nvarchar(50) NOT NULL
+	NameOrNumber nvarchar(50) not NULL
 END
 
 if not exists (SELECT * 
@@ -36,18 +128,18 @@ BEGIN
 	(
 	PropertyId,
 	NameOrNumber
-	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (sTATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 END
 
 -- FIfthAlarm
 
-if exists( select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FIfthAlarm' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FIfthAlarm' )
 BEGIN
 ALTER TABLE dbo.Building Drop Column 
 	FIfthAlarm
 END
 
-if NOT exists( select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FifthAlarm' )
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FifthAlarm' )
 BEGIN
 ALTER TABLE dbo.Building Add 
 	FifthAlarm nvarchar(255) NULL
@@ -55,13 +147,13 @@ END
 
 -- EigthAlarm
 
-if exists( select 1 from sys.all_columns where object_id = object_id('Building') and name = 'EigthAlarm' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'EigthAlarm' )
 BEGIN
 ALTER TABLE dbo.Building Drop Column 
 	EigthAlarm
 END
 
-if NOT exists( select 1 from sys.all_columns where object_id = object_id('Building') and name = 'EighthAlarm' )
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'EighthAlarm' )
 BEGIN
 ALTER TABLE dbo.Building Add 
 	EighthAlarm nvarchar(255) NULL
@@ -88,10 +180,10 @@ ALTER TABLE dbo.Property SET (LOCK_ESCALATION = TABLE)
 
 CREATE TABLE dbo.Tmp_Building
 	(
-	BuildingId uniqueidentifier NOT NULL,
-	PropertyId uniqueidentifier NOT NULL,
+	BuildingId uniqueidentifier not NULL,
+	PropertyId uniqueidentifier not NULL,
 	Status int NULL,
-	StartDate datetime NOT NULL,
+	StartDate datetime not NULL,
 	EndDate datetime NULL,
 	Length int NULL,
 	Width int NULL,
@@ -163,13 +255,13 @@ CREATE TABLE dbo.Tmp_Building
 	SearchAt75Percent nvarchar(255) NULL,
 	SearchAt100Percent nvarchar(255) NULL,
 	Notes nvarchar(255) NULL,
-	RowVersion timestamp NOT NULL,
-	IsDeleted bit NOT NULL,
-	CreatedBy nvarchar(50) NOT NULL,
-	CreatedDate datetimeoffset(7) NOT NULL,
-	UpdatedBy nvarchar(50) NOT NULL,
-	UpdatedDate datetimeoffset(7) NOT NULL,
-	NameOrNumber nvarchar(50) NOT NULL,
+	RowVersion timestamp not NULL,
+	IsDeleted bit not NULL,
+	CreatedBy nvarchar(50) not NULL,
+	CreatedDate datetimeoffset(7) not NULL,
+	UpdatedBy nvarchar(50) not NULL,
+	UpdatedDate datetimeoffset(7) not NULL,
+	NameOrNumber nvarchar(50) not NULL,
 	EighthAlarm nvarchar(255) NULL,
 	FifthAlarm nvarchar(255) NULL
 	)  ON [PRIMARY]
@@ -218,13 +310,13 @@ ALTER TABLE dbo.Building ADD CONSTRAINT
 	PK_Building PRIMARY KEY CLUSTERED 
 	(
 	BuildingId
-	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (sTATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 
 CREATE UNIQUE NONCLUSTERED INDEX IX_Unique_Building_NameOrNumber ON dbo.Building
 	(
 	PropertyId,
 	NameOrNumber
-	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (sTATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ALTER TABLE dbo.Building ADD CONSTRAINT
 	FK_Building_Property FOREIGN KEY
 	(
