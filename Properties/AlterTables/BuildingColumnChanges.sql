@@ -1,3 +1,27 @@
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'AvailableFlow')
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	[AvailableFlow] INT NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'NetFireFlow')
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	[NetFireFlow] INT NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TotalFireFlowNeeded')
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	[TotalFireFlowNeeded] INT NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TestHydrantId')
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	[TestHydrantId] INT NULL
+END
+
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Status')
 BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[Status]', 'StatusId', 'Column'
