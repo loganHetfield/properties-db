@@ -17,3 +17,8 @@ if not exists (select 1 from sys.all_columns where object_id = object_id('Buildi
 BEGIN
     ALTER TABLE [dbo].[BuildingContact] ADD [IsNameSameAsProperty] [BIT] NULL
 END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('BuildingContact') and name = 'RoomNumber')
+BEGIN
+    ALTER TABLE [dbo].[BuildingContact] ADD [RoomNumber] [BIT] NULL
+END

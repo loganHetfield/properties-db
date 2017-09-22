@@ -14,6 +14,7 @@ CREATE TABLE [dbo].[BuildingContact] (
 			[StreetOrHighway]          [NVARCHAR](100)    NULL,
 			[StreetTypeId]             [INT]              NULL,
 			[StreetSuffixId]           [INT]              NULL,
+	        [RoomNumber]		  nvarchar(255) NULL,
 			[City]                     [NVARCHAR](255)    NULL,
 			[StateId]                  [INT]              NULL,
 			[Zip]                      [NVARCHAR](50)     NULL,
