@@ -60,6 +60,7 @@ CREATE TABLE [dbo].[Occupant] (
     [FireLoad]                           INT                NULL,
     [FireWalls]                          INT                NULL,
     [RowVersion]                         ROWVERSION         NOT NULL,
+    [Notes]                              NVARCHAR (255)     NULL,
     [IsDeleted]                          BIT                CONSTRAINT [DF_Occupant_IsDeleted] DEFAULT ((0)) NOT NULL,
     [CreatedBy]                          NVARCHAR (50)      NOT NULL,
     [CreatedDate]                        DATETIMEOFFSET (7) NOT NULL,
