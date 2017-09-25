@@ -1,3 +1,19 @@
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ImageId')
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	[ImageId]						  UNIQUEIDENTIFIER NULL,
+    [FileName]						  NVARCHAR (255)    NULL,
+    [ImageHeight]					  INT              NULL,
+    [ImageWidth]					  INT              NULL
+END   
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Latitude')
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	[Latitude]                        DECIMAL (9, 6)     NULL,
+    [Longitude]                       DECIMAL (9, 6)     NULL
+END  
+
 if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'AvailableFlow')
 BEGIN
 ALTER TABLE [dbo].[Building] Add 
@@ -478,14 +494,4 @@ ALTER TABLE dbo.BuildingNote ADD CONSTRAINT
 	
 ALTER TABLE dbo.BuildingNote SET (LOCK_ESCALATION = TABLE)
 
-END
-
-if exists( select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ImageWidth' )
-BEGIN
-ALTER TABLE dbo.Building Add
-	Latitude decimal(9, 6) NULL,
-	Longitude decimal(9, 6) NULL,
-	[FileName] nvarchar(255) NULL,
-	ImageWidth int NULL,
-	ImageHeight int NULL
 END
