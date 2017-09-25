@@ -11,8 +11,8 @@ ALTER TABLE dbo.[Occupant] ADD
     [HasRestrainedOccupants] bit NULL
 END
 
-if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Notes')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Occupant') and name = 'Notes')
 BEGIN
-ALTER TABLE [dbo].[Building] Add 
+ALTER TABLE [dbo].[Occupant] Add 
 	 [Notes]                              NVARCHAR (255)     NULL
 END   
