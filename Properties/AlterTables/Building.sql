@@ -5,6 +5,12 @@ ALTER TABLE [dbo].[Building] Add
     [FileName]						  NVARCHAR (255)    NULL,
     [ImageHeight]					  INT              NULL,
     [ImageWidth]					  INT              NULL
+END  
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Notes')
+BEGIN
+ALTER TABLE [dbo].[Building] Add 
+	 [Notes]                              NVARCHAR (255)     NULL
 END   
 
 if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Latitude')
