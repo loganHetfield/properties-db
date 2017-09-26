@@ -3,23 +3,24 @@ BEGIN
 
 CREATE TABLE [dbo].[Attachment](
 	[AttachmentId] [uniqueidentifier] NOT NULL,
-	[AttachmentType] [nvarchar](50) NOT NULL,
     [AttachmentTagId] [INT] NULL,
-	[PropertyId] [uniqueidentifier] NULL,
+	[AttachmentType] [nvarchar](50) NOT NULL,
 	[BuildingId] [uniqueidentifier] NULL,
-	[OccupantId] [uniqueidentifier] NULL,
-	[CreateDate] [datetime] NOT NULL,
-	[FileName] [nvarchar](1024) NOT NULL,
 	[ContentType] [nvarchar](50) NOT NULL,
-	[PrimaryId] [uniqueidentifier] NOT NULL,
-	[SecondaryId] [uniqueidentifier] NULL,
-	[ImageWidth] [int] NULL,
-	[ImageHeight] [int] NULL,
-	[IsDeleted] [bit] NOT NULL DEFAULT ((0)),
-	[PrimaryFilePath] [nvarchar](1024) NOT NULL DEFAULT (''),
-	[SecondaryFilePath] [nvarchar](1024) NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[CreatedByFullName] [nvarchar](256) NOT NULL,
 	[CreatedByLogin] [nvarchar](256) NOT NULL,
-	[CreatedByFullName] [nvarchar](256) NOT NULL
+	[FileName] [nvarchar](1024) NOT NULL,
+	[ImageHeight] [int] NULL,
+	[ImageWidth] [int] NULL,
+	[IsDeleted] [bit] NOT NULL DEFAULT ((0)),
+	[OccupantId] [uniqueidentifier] NULL,
+	[PrimaryFilePath] [nvarchar](1024) NOT NULL DEFAULT (''),
+	[PrimaryId] [uniqueidentifier] NOT NULL,
+	[PropertyId] [uniqueidentifier] NULL,
+	[SecondaryFilePath] [nvarchar](1024) NULL,
+	[SecondaryId] [uniqueidentifier] NULL	
+	
  CONSTRAINT [PK_Attachment] PRIMARY KEY CLUSTERED 
 (
 	[AttachmentId] ASC
