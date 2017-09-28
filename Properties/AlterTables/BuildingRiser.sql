@@ -20,3 +20,9 @@ BEGIN
     ALTER TABLE dbo.BuildingRiser Drop Column [Height]
     ALTER TABLE dbo.BuildingRiser Drop Column [Width]
 END
+
+if not exists( select 1 from sys.all_columns where object_id = object_id('BuildingRiser') and (name = 'Certification'))
+BEGIN
+ALTER TABLE dbo.BuildingRiser ADD
+    Certification NVARCHAR(50) NOT NULL    
+END
