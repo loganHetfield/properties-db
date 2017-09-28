@@ -55,7 +55,6 @@ CREATE TABLE [dbo].[Occupant] (
     [TotalExits]                         INT                NULL,
     [InteriorWallsType]                  INT                NULL,
     [InteriorDoorsType]                  INT                NULL,
-    [FireDoorsPresent]                   BIT                NULL,
     [FireDoorsType]                      INT                NULL,
     [FireLoad]                           INT                NULL,
     [FireWalls]                          INT                NULL,

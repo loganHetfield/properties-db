@@ -16,3 +16,8 @@ BEGIN
 ALTER TABLE [dbo].[Occupant] Add 
 	 [Notes]                              NVARCHAR (255)     NULL
 END   
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Occupant') and name = 'FireDoorsPresent' )
+BEGIN
+ALTER TABLE [dbo].[Occupant] DROP COLUMN [FireDoorsPresent]
+END

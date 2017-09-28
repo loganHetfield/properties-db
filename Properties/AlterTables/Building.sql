@@ -43,6 +43,11 @@ BEGIN
 ALTER TABLE [dbo].[Building] Add [FileName] NVARCHAR (255) NULL
 END 
 
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireDoorsPresent' )
+BEGIN
+ALTER TABLE [dbo].[Building] DROP COLUMN [FireDoorsPresent]
+END
+
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireDoorsType' )
 BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[FireDoorsType]', 'FireDoorsId', 'Column' 
@@ -155,7 +160,7 @@ END
 
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TotalValue')
 BEGIN
-ALTER TABLE [dbo].[Building] DROP [TotalValue]
+ALTER TABLE [dbo].[Building] DROP COLUMN [TotalValue]
 END
 
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'UpperFloorConstructionType' )

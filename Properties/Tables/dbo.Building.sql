@@ -30,7 +30,6 @@ CREATE TABLE [dbo].[Building] (
     [FileName]						  NVARCHAR (255)    NULL,
     [FifthAlarm]                         NVARCHAR (255)     NULL,
     [FireDoorsId]                      INT                NULL,
-    [FireDoorsPresent]                   BIT                NULL,
     [FireLoadId]                           INT                NULL,
     [FireWallsId]                         INT                NULL,
     [FireWallsLocation]                  NVARCHAR (255)     NULL,
