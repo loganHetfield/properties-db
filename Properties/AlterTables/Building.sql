@@ -138,14 +138,24 @@ BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[Stock]', 'StockId', 'Column' 
 END
 
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TestHydrantId' and system_type_id = 56)
+BEGIN
+ALTER TABLE [dbo].[Building] ALTER COLUMN [TestHydrantId] NVARCHAR (255) NULL
+END
+
 if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TestHydrantId')
 BEGIN
-ALTER TABLE [dbo].[Building] Add [TestHydrantId] INT NULL
+ALTER TABLE [dbo].[Building] Add [TestHydrantId] NVARCHAR (255) NULL
 END
 
 if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TotalFireFlowNeeded')
 BEGIN
 ALTER TABLE [dbo].[Building] Add [TotalFireFlowNeeded] INT NULL
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TotalValue')
+BEGIN
+ALTER TABLE [dbo].[Building] DROP [TotalValue]
 END
 
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'UpperFloorConstructionType' )

@@ -89,7 +89,7 @@ CREATE TABLE [dbo].[Building] (
     [StatusId]                           INT                NULL,
 	[StockId]                              INT                NULL,
     [Stories]                            INT                NULL,
-    [TestHydrantId]                      INT                NULL,
+    [TestHydrantId]                      NVARCHAR (255)     NULL,
     [ThirdAlarm]                         NVARCHAR (255)     NULL,
     [TotalExits]                         INT                NULL,
     [TotalFireFlowNeeded]                INT                NULL,
