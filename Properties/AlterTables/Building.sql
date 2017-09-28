@@ -18,6 +18,11 @@ BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[BelowGradeConstructionType]', 'BelowGradeConstructionId', 'Column' 
 END
 
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'BuildingValue')
+BEGIN
+ALTER TABLE [dbo].[Building] Add [BuildingValue] INT NULL
+END
+
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ConstructionType' )
 BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[ConstructionType]', 'ConstructionTypeId', 'Column' 
@@ -141,11 +146,6 @@ END
 if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TotalFireFlowNeeded')
 BEGIN
 ALTER TABLE [dbo].[Building] Add [TotalFireFlowNeeded] INT NULL
-END
-
-if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TotalValue')
-BEGIN
-ALTER TABLE [dbo].[Building] Add [TotalValue] INT NULL
 END
 
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'UpperFloorConstructionType' )

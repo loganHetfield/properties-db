@@ -13,6 +13,7 @@ CREATE TABLE [dbo].[Building] (
     [BaseSquareFootage]                  INT                NULL,
     [BelowGradeConstructionId]         INT                NULL,
     [BuildingId]                         UNIQUEIDENTIFIER   NOT NULL,
+	[BuildingValue]                      INT                NULL,
     [CoefficientForConstructionType]     DECIMAL (18, 10)   NULL,
     [ConstructionTypeClass]              INT                NULL,
     [ConstructionTypeId]                   INT                NULL,
