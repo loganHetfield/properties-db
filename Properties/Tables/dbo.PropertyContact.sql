@@ -27,8 +27,7 @@ CREATE TABLE [dbo].[PropertyContact] (
 	[ImageWidth]			  int NULL,
 	[ImageHeight]			  int NULL,	
 	[FaxNumber]				  nvarchar(255) NULL,
-	[Website]				  nvarchar(255) NULL,
-	[IsNameSameAsProperty]	  bit NULL
+	[Website]				  nvarchar(255) NULL
     CONSTRAINT [PK_PropertyContact] PRIMARY KEY CLUSTERED ([PropertyContactId] ASC),
     CONSTRAINT [FK_PropertyContact_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
