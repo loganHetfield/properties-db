@@ -168,3 +168,13 @@ BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[UpperFloorConstructionType]', 'UpperFloorConstructionId', 'Column' 
 END
 
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Latitude')
+BEGIN
+ALTER TABLE [dbo].[Building] DROP COLUMN [Latitude]
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Longitude')
+BEGIN
+ALTER TABLE [dbo].[Building] DROP COLUMN [Longitude]
+END
