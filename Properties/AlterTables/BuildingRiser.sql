@@ -20,3 +20,18 @@ BEGIN
     ALTER TABLE dbo.BuildingRiser Drop Column [Height]
     ALTER TABLE dbo.BuildingRiser Drop Column [Width]
 END
+
+if not exists( select 1 from sys.all_columns where object_id = object_id('BuildingRiser') and (name = 'Certification'))
+BEGIN
+ALTER TABLE dbo.BuildingRiser ADD
+    Certification NVARCHAR(50) NOT NULL    
+END
+
+
+IF EXISTS (SELECT column_name 'Column Name', data_type 'Data Type' FROM information_schema.columns WHERE table_name = 'BuildingRiser'
+AND column_name = 'Drain' AND DATA_TYPE = 'NVARCHAR')
+BEGIN
+ALTER TABLE dbo.BuildingRiser ALTER COLUMN
+    Drain DECIMAL(18,2) NOT NULL    
+
+END
