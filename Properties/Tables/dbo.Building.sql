@@ -19,6 +19,7 @@ CREATE TABLE [dbo].[Building] (
     [ConstructionTypeId]                   INT                NULL,
     [CreatedBy]                          NVARCHAR (50)      NOT NULL,
     [CreatedDate]                        DATETIMEOFFSET (7) NOT NULL,
+    [DeactivationReason]                 NVARCHAR (100)     NULL,
     [EigthAlarm]                         NVARCHAR (255)     NULL,
     [EndDate]                            DATE               NULL,
 	[ExposureCommFactor]                 INT                NULL,

@@ -26,7 +26,12 @@ END
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ConstructionType' )
 BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[ConstructionType]', 'ConstructionTypeId', 'Column' 
-END  
+END 
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'DeactivationReason')
+BEGIN
+ALTER TABLE [dbo].[Building] Add [DeactivationReason] INT NULL
+END 
 
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ExteriorDoorsType' )
 BEGIN
