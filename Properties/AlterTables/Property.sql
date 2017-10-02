@@ -1,3 +1,8 @@
+if exists (select 1 from sys.all_columns where object_id = object_id('Property') and (name = 'CommorOrPreviousNames'))
+BEGIN	
+	EXEC sp_rename '[dbo].[Property].[CommorOrPreviousNames]', 'CommonOrPreviousNames', 'Column';
+END
+
 if not exists (select 1 from sys.all_columns where object_id = object_id('Property') and (name = 'ImageHeight' or name = 'ImageWidth'))
 BEGIN
 ALTER TABLE dbo.Property ADD
@@ -7,10 +12,10 @@ ALTER TABLE dbo.Property ADD
     [ImageWidth]     INT              NULL
 END
 
-if not exists (select 1 from sys.all_columns where object_id = object_id('Property') and (name = 'CommorOrPreviousNames'))
+if not exists (select 1 from sys.all_columns where object_id = object_id('Property') and (name = 'CommonOrPreviousNames'))
 BEGIN
 ALTER TABLE dbo.Property ADD
-	[CommorOrPreviousNames] [nvarchar](255) NULL,
+	[CommonOrPreviousNames] [nvarchar](255) NULL,
 	[PropertyIdentity] [nvarchar](255) NULL,
 	[IsConstructionInProgress] [bit] NULL,
 	[ArePlansInReview] [bit] NULL
@@ -24,4 +29,3 @@ ALTER TABLE dbo.Property ADD
     [StreetSuffix] [nvarchar](255) NULL,
     [State] [nvarchar](255) NULL
 END 
-

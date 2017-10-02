@@ -50,7 +50,7 @@ CREATE TABLE [dbo].[Property] (
     [FileName]						  NVARCHAR (255)    NULL,
     [ImageHeight]					  INT              NULL,
     [ImageWidth]					  INT              NULL,
-	[CommorOrPreviousNames]			  nvarchar(255) NULL,
+	[CommonOrPreviousNames]			  nvarchar(255) NULL,
 	[PropertyIdentity]				  nvarchar(255) NULL,
 	[IsConstructionInProgress]        bit NULL,
 	[ArePlansInReview]                bit NULL,

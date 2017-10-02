@@ -14,6 +14,8 @@ CREATE TABLE [dbo].[Attachment](
 	[ImageHeight] [int] NULL,
 	[ImageWidth] [int] NULL,
 	[IsDeleted] [bit] NOT NULL DEFAULT ((0)),
+	[IsIncludedInPreplan] bit NULL,
+	[Notes] [nvarchar](1024) NULL,
 	[OccupantId] [uniqueidentifier] NULL,
 	[PrimaryFilePath] [nvarchar](1024) NOT NULL DEFAULT (''),
 	[PrimaryId] [uniqueidentifier] NOT NULL,
