@@ -21,8 +21,6 @@ CREATE TABLE [dbo].[BuildingContact] (
 			[County]                   [NVARCHAR](255)    NULL,
 			[Name]                     [NVARCHAR](100)    NULL,
 			[FaxNumber]                [NVARCHAR](50)     NULL,
-			[Website]                  [NVARCHAR](255)    NULL,
-			[BusinessName]             [NVARCHAR](50)     NULL,
 			[ImageId]                  [UNIQUEIDENTIFIER] NULL,
 			[ThumbImageId]             [UNIQUEIDENTIFIER] NULL,
 			[FileName]                 [NVARCHAR](255)     NULL,

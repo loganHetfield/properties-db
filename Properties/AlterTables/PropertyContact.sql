@@ -1,3 +1,19 @@
+if  exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'BusinessName'))
+BEGIN
+ALTER TABLE dbo.PropertyContact DROP COLUMN BusinessName
+END
+
+if  exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'Website'))
+BEGIN
+ALTER TABLE dbo.PropertyContact DROP COLUMN Website
+END
+
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and name = 'FaxNumber')
+BEGIN
+    ALTER TABLE [dbo].[PropertyContact] ADD [FaxNumber] [NVARCHAR](50) NULL
+END
+
 if  exists (select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'FirstName' or name = 'LastName'))
 BEGIN
 ALTER TABLE dbo.PropertyContact DROP COLUMN FirstName, LastName
@@ -19,14 +35,6 @@ BEGIN
 
 EXEC sp_rename '[dbo].[PropertyContact].[Height]', 'ImageHeight', 'Column';
 EXEC sp_rename '[dbo].[PropertyContact].[Width]', 'ImageWidth', 'Column';
-
-END
-
-
-if exists( select 1 from sys.all_columns where object_id = object_id('PropertyContact') and (name = 'WebSite'))
-BEGIN
-
-EXEC sp_rename '[dbo].[PropertyContact].[WebSite]', 'Website', 'Column';
 
 END
 

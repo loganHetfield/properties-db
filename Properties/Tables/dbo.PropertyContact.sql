@@ -5,7 +5,6 @@ CREATE TABLE [dbo].[PropertyContact] (
     [PropertyContactId]       UNIQUEIDENTIFIER NOT NULL,
     [PropertyId]              UNIQUEIDENTIFIER NOT NULL,
     [Name]					  NVARCHAR (255)    NULL,
-    [BusinessName]			  NVARCHAR (255)    NULL,
     [IsPrimaryContact]        BIT              NULL,
     [IsEmergencyContact]      BIT              NULL,
     [Phone]                   NVARCHAR (50)    NULL,
@@ -26,8 +25,7 @@ CREATE TABLE [dbo].[PropertyContact] (
 	[FileName]				  nvarchar(255) NULL,
 	[ImageWidth]			  int NULL,
 	[ImageHeight]			  int NULL,	
-	[FaxNumber]				  nvarchar(255) NULL,
-	[Website]				  nvarchar(255) NULL
+	[FaxNumber]				  nvarchar(255) NULL
     CONSTRAINT [PK_PropertyContact] PRIMARY KEY CLUSTERED ([PropertyContactId] ASC),
     CONSTRAINT [FK_PropertyContact_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
