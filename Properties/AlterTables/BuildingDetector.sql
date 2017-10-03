@@ -20,3 +20,16 @@ BEGIN
     ALTER TABLE dbo.BuildingDetector Drop Column [Height]
     ALTER TABLE dbo.BuildingDetector Drop Column [Width]
 END
+
+if exists( select 1 from sys.all_columns where object_id = object_id('BuildingDetector') and (name = 'Height' or name = 'Width'))
+BEGIN
+    ALTER TABLE dbo.BuildingDetector Drop Column [Height]
+    ALTER TABLE dbo.BuildingDetector Drop Column [Width]
+END
+
+IF EXISTS (SELECT column_name 'Column Name', data_type 'Data Type' FROM information_schema.columns WHERE table_name = 'BuildingDetector'
+AND column_name = 'AreaProtected' AND DATA_TYPE = 'nvarchar')
+BEGIN
+ALTER TABLE dbo.BuildingDetector ALTER COLUMN
+    AreaProtected DECIMAL(18,2) NULL    
+END
