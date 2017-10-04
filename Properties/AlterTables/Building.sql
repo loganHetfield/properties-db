@@ -183,3 +183,8 @@ if exists (select 1 from sys.all_columns where object_id = object_id('Building')
 BEGIN
 ALTER TABLE [dbo].[Building] DROP COLUMN [Longitude]
 END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'EightAlarm' )
+BEGIN
+    EXECUTE sp_rename '[dbo].[Building].[EightAlarm]', 'EighthAlarm', 'Column'
+END
