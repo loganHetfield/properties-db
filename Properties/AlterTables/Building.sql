@@ -18,6 +18,11 @@ BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[BelowGradeConstructionType]', 'BelowGradeConstructionId', 'Column' 
 END
 
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'BuildingValue' and system_type_id = 56)
+BEGIN
+	ALTER TABLE [dbo].[Building] ALTER COLUMN [BuildingValue] BIGINT NULL
+END
+
 if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'BuildingValue')
 BEGIN
 ALTER TABLE [dbo].[Building] Add [BuildingValue] INT NULL
