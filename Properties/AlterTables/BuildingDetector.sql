@@ -30,6 +30,5 @@ END
 IF EXISTS (SELECT column_name 'Column Name', data_type 'Data Type' FROM information_schema.columns WHERE table_name = 'BuildingDetector'
 AND column_name = 'AreaProtected' AND DATA_TYPE = 'nvarchar')
 BEGIN
-ALTER TABLE dbo.BuildingDetector ALTER COLUMN
-    AreaProtected DECIMAL(18,2) NULL    
+    ALTER TABLE dbo.BuildingDetector ALTER COLUMN AreaProtected INT NULL
 END

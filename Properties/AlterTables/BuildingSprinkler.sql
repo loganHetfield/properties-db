@@ -19,3 +19,10 @@ BEGIN
     ALTER TABLE dbo.BuildingSprinkler Drop Column [Height]
     ALTER TABLE dbo.BuildingSprinkler Drop Column [Width]
 END
+
+IF EXISTS (SELECT column_name 'Column Name', data_type 'Data Type' FROM information_schema.columns WHERE table_name = 'BuildingSprinkler'
+AND column_name = 'AreaOrCompartmentCovered' AND DATA_TYPE = 'nvarchar')
+BEGIN
+    ALTER TABLE dbo.BuildingSprinkler ALTER COLUMN AreaOrCompartmentCovered INT NULL
+    EXECUTE sp_rename '[dbo].[BuildingSprinkler].[AreaOrCompartmentCovered]', 'AreaCovered', 'Column'
+END

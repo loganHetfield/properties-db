@@ -20,3 +20,9 @@ BEGIN
     ALTER TABLE dbo.BuildingAlarm Drop Column [Height]
     ALTER TABLE dbo.BuildingAlarm Drop Column [Width]
 END
+
+IF EXISTS (SELECT column_name 'Column Name', data_type 'Data Type' FROM information_schema.columns WHERE table_name = 'BuildingAlarm'
+AND column_name = 'AreaCovered' AND DATA_TYPE = 'nvarchar')
+BEGIN
+    ALTER TABLE dbo.BuildingAlarm ALTER COLUMN AreaCovered INT NULL
+END
