@@ -1,0 +1,2 @@
+schema\dbo.Inspection.sql
+schema\dbo.InspectionOtherInspectors.sql

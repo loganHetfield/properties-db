@@ -1,59 +1,69 @@
 [CmdletBinding()]
-param($databaseDirs = @('Properties'))
+param($databaseDirs = @('Properties', 'Inspections'))
 
 $executingScript = $MyInvocation.MyCommand.Path
-$executingScriptPath = split-path $executingScript
+$executingScriptPath = Split-Path $executingScript
+
 pushd  $executingScriptPath
+try {
 
-if ( $databaseDirs.Count -eq 0 ) {
-    $databaseDirs = (get-childitem *\Manifest.txt | % { $_.directory.name })
-}
-
-import-module ./Util.psm1
-
-function run {
-    $ErrorActionPreference = 'Stop'
-	
-	write-verbose "Starting"
-	
-    foreach ($databaseDir in $databaseDirs) {
-		write-verbose "Processing Directory $relativePath"
-        $baseDir = resolve-path $databaseDir
-        generate-sqlcmdscript $baseDir
+    if ( $databaseDirs.Count -eq 0 ) {
+        $databaseDirs = (Get-ChildItem *\Manifest.txt | % { $_.Directory.name })
     }
-}
 
-function generate-sqlcmdscript($baseDir) {
-    try {
+    Import-Module .\Util.psm1
+
+    function Run {
+        $ErrorActionPreference = 'Stop'
+	
+	    Write-Verbose "Starting"
+	
+        foreach ($databaseDir in $databaseDirs) {
+		    Write-Verbose "Processing Directory $relativePath"
+            $baseDir = Resolve-Path $databaseDir
+            Generate-SqlCmdScript $baseDir
+        }
+    }
+
+    function Generate-SqlCmdScript($baseDir) {
         pushd $baseDir
+        try {
+            Write-Verbose "Processing scripts in $baseDir..."
 
-        write-verbose "Processing scripts in $baseDir..."
+            $scriptFiles = Get-Content Manifest.txt |
+                ? { -not $_.StartsWith('#') } | 
+                ? { $_ -ne $null -and $_.Trim().Length -gt 0 } | 
+                % { 'Get-ChildItem ' + $_ } | 
+                Invoke-Expression | 
+                ? { $_.Name -ne 'deploy.sql' } | 
+                ? { -not $_.PSIsContainer } | 
+                Get-UniqueFiles
 
-        $scriptFiles = get-content Manifest.txt | ? { -not $_.startswith('#') } | ? { $_ -ne $null -and $_.Trim().Length -gt 0 }| % { 'get-childitem ' + $_ } | invoke-expression | ? { $_.Name -ne 'deploy.sql' } | ?{ -not $_.PSIsContainer } | get-uniquefiles
-        $sqlCmdScript = $scriptFiles | get-script
-        $sqlCmdFile = join-path $baseDir deploy.sql
-        set-content $sqlCmdFile ("SET QUOTED_IDENTIFIER ON`n`n");
-        Add-Content $sqlCmdFile $sqlCmdScript;
+            $sqlCmdScript = $scriptFiles | Get-Script
+            $sqlCmdFile = Join-Path $baseDir deploy.sql
+            Set-Content $sqlCmdFile ("SET QUOTED_IDENTIFIER ON`n`n");
+            Add-Content $sqlCmdFile $sqlCmdScript;
+        }
+        finally {
+            popd
+        }
+
+        Write-Verbose "Done. See $sqlCmdFile."
     }
-    finally {
-        popd
+
+    function Get-Script($resultFile) {
+        process {
+            $relativePath = Resolve-Path $_ -Relative
+            Write-Verbose "Processing $relativePath."
+            "PRINT 'Processing file: $relativePath...'"
+            "GO"
+            ":r $relativePath"
+            ""
+        }
     }
 
-    write-verbose "Done. See $sqlCmdFile."
-    
+    Run
 }
-
-function get-script($resultFile) {
-    process {
-        $relativePath = resolve-path $_ -relative
-        write-verbose "Processing $relativePath."
-        "PRINT 'Processing file: $relativePath...'"
-        "GO"
-        ":r $relativePath"
-        ""
-    }
+finally {
+    popd
 }
-
-##.\ESOSUITE_MDM\dataload\CreateBulkImportSQL.ps1
-run
-popd

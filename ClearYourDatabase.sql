@@ -60,3 +60,8 @@ delete [PropertyNote]
 delete [PropertyOtherWaterSource]
 delete [PropertySpecialHazard]
 delete [Property]
+
+-- Inspections
+
+delete [InspectionOtherInspectors]
+delete [Inspection]
