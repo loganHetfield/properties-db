@@ -1,7 +1,11 @@
+if not exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'Note'))
+BEGIN
+   ALTER TABLE [dbo].[Event] ADD [Note] NVARCHAR (1023) NULL
+END
+
 if not exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'EventMessage'))
 BEGIN
-ALTER TABLE dbo.Event ADD
-	[EventMessage] NVARCHAR (1023)
+   ALTER TABLE [dbo].[Event] ADD [EventMessage] NVARCHAR (1023) NULL
 END
 
 if exists( select 1 from sys.all_columns where object_id = object_id('Event') and (name = 'DateTime'))

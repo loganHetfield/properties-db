@@ -1,3 +1,8 @@
+IF EXISTS (SELECT 1 from sys.indexes WHERE name = 'IX_Unique_Building_Name' and is_unique = 1)   
+   DROP INDEX [IX_Unique_Building_Name] ON [dbo].[Building];   
+   CREATE NONCLUSTERED INDEX [IX_Unique_Building_Name] ON [dbo].[Building]([PropertyId] ASC, [NameOrNumber] ASC);
+GO  
+
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'AtticUse' )
 BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[AtticUse]', 'AtticUseId', 'Column' 
@@ -33,9 +38,14 @@ BEGIN
 	EXECUTE sp_rename '[dbo].[Building].[ConstructionType]', 'ConstructionTypeId', 'Column' 
 END 
 
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'DeactivationReason' AND max_length < 1000)
+BEGIN
+	ALTER TABLE [dbo].[Building] ALTER COLUMN [DeactivationReason] NVARCHAR (1023) NULL
+END 
+
 if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'DeactivationReason')
 BEGIN
-ALTER TABLE [dbo].[Building] Add [DeactivationReason] NVARCHAR (100) NULL
+	ALTER TABLE [dbo].[Building] Add [DeactivationReason] NVARCHAR (1023) NULL
 END 
 
 if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ExteriorDoorsType' )

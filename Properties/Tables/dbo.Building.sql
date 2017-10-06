@@ -19,7 +19,7 @@ CREATE TABLE [dbo].[Building] (
     [ConstructionTypeId]                 INT                NULL,
     [CreatedBy]                          NVARCHAR (50)      NOT NULL,
     [CreatedDate]                        DATETIMEOFFSET (7) NOT NULL,
-    [DeactivationReason]                 NVARCHAR (100)     NULL,
+    [DeactivationReason]                 NVARCHAR (1023)    NULL,
     [EighthAlarm]                        NVARCHAR (255)     NULL,
     [EndDate]                            DATE               NULL,
     [ExposureCommFactor]                 INT                NULL,
@@ -28,7 +28,7 @@ CREATE TABLE [dbo].[Building] (
     [ExteriorWallsId]                    INT                NULL,
     [ExtinguisherMonitoringCompany]      NVARCHAR (50)      NULL,
     [ExtinguisherMonitoringCompanyPhone] NVARCHAR (50)      NULL,
-    [FileName]						               NVARCHAR (255)     NULL,
+    [FileName]						     NVARCHAR (255)     NULL,
     [FifthAlarm]                         NVARCHAR (255)     NULL,
     [FireDoorsId]                        INT                NULL,
     [FireLoadId]                         INT                NULL,
@@ -38,16 +38,16 @@ CREATE TABLE [dbo].[Building] (
     [FourthAlarm]                        NVARCHAR (255)     NULL,
     [HeatingSystemsPresent]              BIT                NULL,
     [Height]                             INT                NULL,
-    [ImageHeight]					               INT                NULL,
-    [ImageId]						                 UNIQUEIDENTIFIER   NULL,
-    [ImageWidth]					               INT                NULL,
+    [ImageHeight]					     INT                NULL,
+    [ImageId]						     UNIQUEIDENTIFIER   NULL,
+    [ImageWidth]					     INT                NULL,
     [InteriorDoorsId]                    INT                NULL,
     [InteriorWallsId]                    INT                NULL,
     [IsDeleted]                          BIT                CONSTRAINT [DF_Building_IsDeleted] DEFAULT ((0)) NOT NULL,
     [IsoConstructionCodeId]              INT                NULL,
-    [Latitude]                        DECIMAL (9, 6)     NULL,
+    [Latitude]                           DECIMAL (9, 6)     NULL,
     [Length]                             INT                NULL,
-    [Longitude]                       DECIMAL (9, 6)     NULL,
+    [Longitude]                          DECIMAL (9, 6)     NULL,
     [MainFloorConstructionId]            INT                NULL,
     [NameOrNumber]                       NVARCHAR (50)      NULL,
     [NetFireFlow]                        INT                NULL,
@@ -104,7 +104,6 @@ CREATE TABLE [dbo].[Building] (
     CONSTRAINT [FK_Building_Property] FOREIGN KEY ([PropertyId]) REFERENCES [dbo].[Property] ([PropertyId])
 );
 
-CREATE UNIQUE NONCLUSTERED INDEX [IX_Unique_Building_Name]
-    ON [dbo].[Building]([PropertyId] ASC, [NameOrNumber] ASC);
+CREATE NONCLUSTERED INDEX [IX_Unique_Building_Name] ON [dbo].[Building]([PropertyId] ASC, [NameOrNumber] ASC);
 
 END
