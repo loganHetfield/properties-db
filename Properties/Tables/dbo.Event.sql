@@ -10,7 +10,8 @@ CREATE TABLE [dbo].[Event] (
     [EventType]  NVARCHAR (50)    NOT NULL,
     [ObjectType] NVARCHAR (50)    NULL,
     [UserName]   NVARCHAR (255)   NULL,
-	[EventMessage] NVARCHAR (1023)
+	[EventMessage] NVARCHAR (1023) NULL,
+	[Note] NVARCHAR (1023) NULL,
     CONSTRAINT [PK_Event] PRIMARY KEY CLUSTERED ([EventId] ASC)
 );
 

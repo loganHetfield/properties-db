@@ -1,201 +1,208 @@
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'AtticUse' )
+IF EXISTS (SELECT 1 from sys.indexes WHERE name = 'IX_Unique_Building_Name' and is_unique = 1)   
+   DROP INDEX [IX_Unique_Building_Name] ON [dbo].[Building];  
+GO  
+
+IF NOT EXISTS (SELECT 1 from sys.indexes WHERE name = 'IX_Unique_Building_Name')   
+   CREATE NONCLUSTERED INDEX [IX_Unique_Building_Name] ON [dbo].[Building]([PropertyId] ASC, [NameOrNumber] ASC);
+GO  
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'AtticUse' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[AtticUse]', 'AtticUseId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[AtticUse]', 'AtticUseId', 'Column' 
 END
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'AvailableFlow')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'AvailableFlow')
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [AvailableFlow] INT NULL
+ALTER TABLE [dbo].[Building] Add [AvailableFlow] INT NULL
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'BasementUse' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'BasementUse' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[BasementUse]', 'BasementUseId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[BasementUse]', 'BasementUseId', 'Column' 
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'BelowGradeConstructionType' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'BelowGradeConstructionType' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[BelowGradeConstructionType]', 'BelowGradeConstructionId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[BelowGradeConstructionType]', 'BelowGradeConstructionId', 'Column' 
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'BuildingValue' AND system_type_id = 56)
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'BuildingValue' and system_type_id = 56)
 BEGIN
-    ALTER TABLE [dbo].[Building] ALTER COLUMN [BuildingValue] BIGINT NULL
+	ALTER TABLE [dbo].[Building] ALTER COLUMN [BuildingValue] BIGINT NULL
 END
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'BuildingValue')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'BuildingValue')
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [BuildingValue] INT NULL
+ALTER TABLE [dbo].[Building] Add [BuildingValue] INT NULL
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'ConstructionType' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ConstructionType' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[ConstructionType]', 'ConstructionTypeId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[ConstructionType]', 'ConstructionTypeId', 'Column' 
 END 
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'DeactivationReason')
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'DeactivationReason' AND max_length < 1000)
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [DeactivationReason] NVARCHAR (100) NULL
+	ALTER TABLE [dbo].[Building] ALTER COLUMN [DeactivationReason] NVARCHAR (1023) NULL
 END 
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'ExteriorDoorsType' )
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'DeactivationReason')
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[ExteriorDoorsType]', 'ExteriorDoorsId', 'Column' 
-END
-
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'ExteriorWallsType' )
-BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[ExteriorWallsType]', 'ExteriorWallsId', 'Column' 
-END
-
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'FileName')
-BEGIN
-    ALTER TABLE [dbo].[Building] Add [FileName] NVARCHAR (255) NULL
+	ALTER TABLE [dbo].[Building] Add [DeactivationReason] NVARCHAR (1023) NULL
 END 
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'FireDoorsPresent' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ExteriorDoorsType' )
 BEGIN
-    ALTER TABLE [dbo].[Building] DROP COLUMN [FireDoorsPresent]
+	EXECUTE sp_rename '[dbo].[Building].[ExteriorDoorsType]', 'ExteriorDoorsId', 'Column' 
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'FireDoorsType' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ExteriorWallsType' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[FireDoorsType]', 'FireDoorsId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[ExteriorWallsType]', 'ExteriorWallsId', 'Column' 
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'FireLoad' )
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FileName')
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[FireLoad]', 'FireLoadId', 'Column' 
-END
-
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'FireWalls' )
-BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[FireWalls]', 'FireWallsId', 'Column' 
+ALTER TABLE [dbo].[Building] Add [FileName] NVARCHAR (255) NULL
 END 
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'FireWallsLocation' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireDoorsPresent' )
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [FireWallsLocation] NVARCHAR (255) NULL
+ALTER TABLE [dbo].[Building] DROP COLUMN [FireDoorsPresent]
 END
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'ImageHeight')
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireDoorsType' )
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [ImageHeight] INT NULL
+	EXECUTE sp_rename '[dbo].[Building].[FireDoorsType]', 'FireDoorsId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireLoad' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[FireLoad]', 'FireLoadId', 'Column' 
+END
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireWalls' )
+BEGIN
+	EXECUTE sp_rename '[dbo].[Building].[FireWalls]', 'FireWallsId', 'Column' 
+END 
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'FireWallsLocation' )
+BEGIN
+ALTER TABLE [dbo].[Building] Add [FireWallsLocation] NVARCHAR (255) NULL
+END
+
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ImageHeight')
+BEGIN
+ALTER TABLE [dbo].[Building] Add [ImageHeight] INT NULL
 END  
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'ImageId')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ImageId')
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [ImageId] UNIQUEIDENTIFIER NULL
+ALTER TABLE [dbo].[Building] Add [ImageId] UNIQUEIDENTIFIER NULL
 END  
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'ImageWidth')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'ImageWidth')
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [ImageWidth] INT NULL
+ALTER TABLE [dbo].[Building] Add [ImageWidth] INT NULL
 END  
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'InteriorDoorsType' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'InteriorDoorsType' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[InteriorDoorsType]', 'InteriorDoorsId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[InteriorDoorsType]', 'InteriorDoorsId', 'Column' 
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'InteriorWallsType' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'InteriorWallsType' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[InteriorWallsType]', 'InteriorWallsId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[InteriorWallsType]', 'InteriorWallsId', 'Column' 
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'IsoConstructionCode' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'IsoConstructionCode' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[IsoConstructionCode]', 'IsoConstructionCodeId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[IsoConstructionCode]', 'IsoConstructionCodeId', 'Column' 
 END
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'Latitude')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Latitude')
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [Latitude] DECIMAL (9, 6) NULL
+ALTER TABLE [dbo].[Building] Add [Latitude] DECIMAL (9, 6) NULL
 END  
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'Longitude')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Longitude')
 BEGIN
-   ALTER TABLE [dbo].[Building] Add [Longitude] DECIMAL (9, 6) NULL
+ALTER TABLE [dbo].[Building] Add [Longitude] DECIMAL (9, 6) NULL
 END  
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'NetFireFlow')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'NetFireFlow')
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [NetFireFlow] INT NULL
+ALTER TABLE [dbo].[Building] Add [NetFireFlow] INT NULL
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'MainFloorConstructionType' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'MainFloorConstructionType' )
 BEGIN
-   EXECUTE sp_rename '[dbo].[Building].[MainFloorConstructionType]', 'MainFloorConstructionId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[MainFloorConstructionType]', 'MainFloorConstructionId', 'Column' 
 END
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'Notes')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Notes')
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [Notes] NVARCHAR (255) NULL
+ALTER TABLE [dbo].[Building] Add [Notes] NVARCHAR (255) NULL
 END  
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'RoofMaterialId' )
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'RoofMaterialId' )
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [RoofMaterialId] INT NULL
+ALTER TABLE [dbo].[Building] Add [RoofMaterialId] INT NULL
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'RoofType' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'RoofType' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[RoofType]', 'RoofTypeId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[RoofType]', 'RoofTypeId', 'Column' 
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'Status')
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Status')
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[Status]', 'StatusId', 'Column'
+	EXECUTE sp_rename '[dbo].[Building].[Status]', 'StatusId', 'Column'
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'Stock' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Stock' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[Stock]', 'StockId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[Stock]', 'StockId', 'Column' 
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'TestHydrantId' AND system_type_id = 56)
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TestHydrantId' and system_type_id = 56)
 BEGIN
-    ALTER TABLE [dbo].[Building] ALTER COLUMN [TestHydrantId] NVARCHAR (255) NULL
+ALTER TABLE [dbo].[Building] ALTER COLUMN [TestHydrantId] NVARCHAR (255) NULL
 END
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'TestHydrantId')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TestHydrantId')
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [TestHydrantId] NVARCHAR (255) NULL
+ALTER TABLE [dbo].[Building] Add [TestHydrantId] NVARCHAR (255) NULL
 END
 
-IF NOT EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'TotalFireFlowNeeded')
+if not exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TotalFireFlowNeeded')
 BEGIN
-    ALTER TABLE [dbo].[Building] Add [TotalFireFlowNeeded] INT NULL
+ALTER TABLE [dbo].[Building] Add [TotalFireFlowNeeded] INT NULL
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'TotalValue')
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'TotalValue')
 BEGIN
-    ALTER TABLE [dbo].[Building] DROP COLUMN [TotalValue]
+ALTER TABLE [dbo].[Building] DROP COLUMN [TotalValue]
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'UpperFloorConstructionType' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'UpperFloorConstructionType' )
 BEGIN
-    EXECUTE sp_rename '[dbo].[Building].[UpperFloorConstructionType]', 'UpperFloorConstructionId', 'Column' 
+	EXECUTE sp_rename '[dbo].[Building].[UpperFloorConstructionType]', 'UpperFloorConstructionId', 'Column' 
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'Latitude')
+
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Latitude')
 BEGIN
 ALTER TABLE [dbo].[Building] DROP COLUMN [Latitude]
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'Longitude')
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'Longitude')
 BEGIN
-    ALTER TABLE [dbo].[Building] DROP COLUMN [Longitude]
+ALTER TABLE [dbo].[Building] DROP COLUMN [Longitude]
 END
 
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'EightAlarm' )
+if exists (select 1 from sys.all_columns where object_id = object_id('Building') and name = 'EightAlarm' )
 BEGIN
     EXECUTE sp_rename '[dbo].[Building].[EightAlarm]', 'EighthAlarm', 'Column'
-END
-
-IF EXISTS (SELECT 1 FROM sys.all_columns WHERE object_id = object_id('Building') AND NAME = 'NameOrNumber')
-BEGIN
-	  DROP INDEX Building.IX_Unique_Building_Name
-    ALTER TABLE [dbo].[Building] ALTER COLUMN [NameOrNumber] NVARCHAR(50) NOT NULL
-    CREATE INDEX IX_Unique_Building_Name ON Building(NameOrNumber)
 END
