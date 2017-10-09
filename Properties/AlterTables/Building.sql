@@ -206,3 +206,28 @@ if exists (select 1 from sys.all_columns where object_id = object_id('Building')
 BEGIN
     EXECUTE sp_rename '[dbo].[Building].[EightAlarm]', 'EighthAlarm', 'Column'
 END
+
+IF EXISTS (SELECT column_name 'Column Name', data_type 'Data Type' FROM information_schema.columns WHERE table_name = 'Building'
+AND column_name = 'RequiredFireFlowAt25Percent' AND DATA_TYPE = 'int')
+BEGIN
+    ALTER TABLE [dbo].[Building] ALTER COLUMN [RequiredFireFlowAt25Percent] DECIMAL(9,2) NULL
+END
+
+IF EXISTS (SELECT column_name 'Column Name', data_type 'Data Type' FROM information_schema.columns WHERE table_name = 'Building'
+AND column_name = 'RequiredFireFlowAt50Percent' AND DATA_TYPE = 'int')
+BEGIN
+    ALTER TABLE [dbo].[Building] ALTER COLUMN [RequiredFireFlowAt50Percent] DECIMAL(9,2) NULL
+END
+
+
+IF EXISTS (SELECT column_name 'Column Name', data_type 'Data Type' FROM information_schema.columns WHERE table_name = 'Building'
+AND column_name = 'RequiredFireFlowAt75Percent' AND DATA_TYPE = 'int')
+BEGIN
+    ALTER TABLE [dbo].[Building] ALTER COLUMN [RequiredFireFlowAt75Percent] DECIMAL(9,2) NULL
+END
+
+IF EXISTS (SELECT column_name 'Column Name', data_type 'Data Type' FROM information_schema.columns WHERE table_name = 'Building'
+AND column_name = 'RequiredFireFlowAt100Percent' AND DATA_TYPE = 'int')
+BEGIN
+    ALTER TABLE [dbo].[Building] ALTER COLUMN [RequiredFireFlowAt100Percent] DECIMAL(9,2) NULL
+END
