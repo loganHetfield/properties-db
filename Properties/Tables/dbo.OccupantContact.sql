@@ -2,21 +2,32 @@
 BEGIN
 
 CREATE TABLE [dbo].[OccupantContact] (
-    [OccupantContactId]       UNIQUEIDENTIFIER NOT NULL,
-    [OccupantId]              UNIQUEIDENTIFIER NOT NULL,
-    [FirstName]               NVARCHAR (50)    NULL,
-    [LastName]                NVARCHAR (50)    NULL,
-    [BusinessName]            NVARCHAR (50)    NULL,
-    [IsPrimaryContact]        BIT              NULL,
-    [EmergencyContact]        BIT              NULL,
-    [Phone]                   NVARCHAR (50)    NULL,
-    [Email]                   NVARCHAR (1024)  NULL,
-    [IsAddressSameAsProperty] BIT              NULL,
-    CONSTRAINT [PK_OccupantContact] PRIMARY KEY CLUSTERED ([OccupantContactId] ASC),
+		[City]                    NVARCHAR(255)        NULL,  
+		[County]                  NVARCHAR(255)        NULL,
+		[Email]                   NVARCHAR(1024)       NULL,
+		[FaxNumber]               NVARCHAR(50)         NULL,
+		[FileName]                NVARCHAR(255)        NULL,
+		[ImageHeight]             INT                  NULL,
+		[ImageId]                 UNIQUEIDENTIFIER     NULL,
+		[ImageWidth]              INT                  NULL,
+		[IsAddressSameAsProperty] BIT                  NULL,
+		[IsEmergencyContact]      BIT                  NULL,
+		[IsPrimaryContact]        BIT                  NULL,
+		[Name]                    NVARCHAR(100)        NULL,
+		[NumberOrMilepost]        NVARCHAR(50)         NULL,
+		[OccupantContactId]       UNIQUEIDENTIFIER NOT NULL,
+		[OccupantId]              UNIQUEIDENTIFIER NOT NULL,
+		[Phone]                   NVARCHAR(50)         NULL,
+		[RoomNumber]              NVARCHAR(255)        NULL,
+		[StateId]                 INT                  NULL,
+		[StreetOrHighway]         NVARCHAR(100)        NULL,
+		[StreetPrefixId]          INT                  NULL,
+		[StreetSuffixId]          INT                  NULL,
+		[StreetTypeId]            INT                  NULL,
+		[ThumbImageId]            UNIQUEIDENTIFIER     NULL,
+		[Zip]                     NVARCHAR(50)         NULL,
+		CONSTRAINT [PK_OccupantContact] PRIMARY KEY CLUSTERED ([OccupantContactId] ASC),
     CONSTRAINT [FK_OccupantContact_Occupant] FOREIGN KEY ([OccupantId]) REFERENCES [dbo].[Occupant] ([OccupantId])
 );
 
 END
-
-
-

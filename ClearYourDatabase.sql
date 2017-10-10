@@ -19,7 +19,6 @@ delete [Chemical]
 -- Occupant Document
 
 delete [OccupantAccess]
-delete [OccupantAED]
 delete [OccupantAlarm]
 delete [OccupantChemicalTank]
 delete [OccupantContact]

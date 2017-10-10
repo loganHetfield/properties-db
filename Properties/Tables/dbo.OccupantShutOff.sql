@@ -2,10 +2,15 @@
 BEGIN
 
 CREATE TABLE [dbo].[OccupantShutOff] (
-    [OccupantShutOffId] UNIQUEIDENTIFIER NOT NULL,
-    [OccupantId]        UNIQUEIDENTIFIER NOT NULL,
-    [Type]              INT              NULL,
-    [Location]          NVARCHAR (50)    NULL,
+    [FileName]          [NVARCHAR](255)        NULL,
+    [ImageHeight]       [INT]                  NULL,
+    [ImageId]           [UNIQUEIDENTIFIER]     NULL,
+    [ImageWidth]        [INT]                  NULL,
+    [Location]          [NVARCHAR](50)         NULL,
+    [OccupantId]        [UNIQUEIDENTIFIER] NOT NULL,    
+    [OccupantShutOffId] [UNIQUEIDENTIFIER] NOT NULL,    
+    [ThumbImageId]      [UNIQUEIDENTIFIER]     NULL,
+    [TypeId]            [INT]                  NULL,    
     CONSTRAINT [PK_OccupantShutOff] PRIMARY KEY CLUSTERED ([OccupantShutOffId] ASC),
     CONSTRAINT [FK_OccupantShutOff_Occupant] FOREIGN KEY ([OccupantId]) REFERENCES [dbo].[Occupant] ([OccupantId])
 );
