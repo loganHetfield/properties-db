@@ -2,18 +2,18 @@
 BEGIN 
 
 CREATE TABLE [dbo].[OccupantNote](
-	[OccupantNoteId] [uniqueidentifier] NOT NULL,
-	[OccupantId] [uniqueidentifier] NOT NULL,
-	[Note] [nvarchar](255) NULL,
-	[ImageId] [uniqueidentifier] NULL,
-	[ThumbImageId] [uniqueidentifier] NULL,
-	[FileName] [nvarchar](255) NULL,
-	[ImageHeight] [int] NULL,
-	[ImageWidth] [int] NULL,
-	[CreatedBy] [nvarchar](50) NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[UpdatedBy] [nvarchar](50) NOT NULL,
-	[UpdatedDate] [datetime] NOT NULL,
+		[CreatedBy]      [NVARCHAR](50)     NOT NULL,
+		[CreatedDate]    [DATETIME]         NOT NULL,
+    [FileName]       [NVARCHAR](255)        NULL,
+		[ImageHeight]    [INT]                  NULL,
+		[ImageId]        [UNIQUEIDENTIFIER]     NULL,
+		[ImageWidth]     [INT]                  NULL,
+		[Note]           [NVARCHAR](255)        NULL,
+		[OccupantNoteId] [UNIQUEIDENTIFIER] NOT NULL,
+		[OccupantId]     [UNIQUEIDENTIFIER] NOT NULL,		
+		[ThumbImageId]   [UNIQUEIDENTIFIER]     NULL,		
+		[UpdatedBy]      [NVARCHAR](50)     NOT NULL,
+		[UpdatedDate]    [DATETIME]         NOT NULL,
  CONSTRAINT [PK_OccupantNote] PRIMARY KEY CLUSTERED 
 (
 	[OccupantNoteId] ASC
