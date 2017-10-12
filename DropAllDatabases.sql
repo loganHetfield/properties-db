@@ -19,9 +19,9 @@ drop table [Chemical]
 -- Occupant Document
 
 drop table [OccupantAccess]
-drop table [OccupantAED]
 drop table [OccupantAlarm]
 drop table [OccupantChemicalTank]
+drop table [OccupantContactRole]
 drop table [OccupantContact]
 drop table [OccupantDetector]
 drop table [OccupantExtinguisherSystem]
